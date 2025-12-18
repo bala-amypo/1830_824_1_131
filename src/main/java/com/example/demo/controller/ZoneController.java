@@ -22,24 +22,27 @@ public class LocationController {
     // for get all the data in list view
     @GetMapping
     public List<Zone> getAll() {
-        return zs.getAllZone();
+        return zs.getAllZones();
     }
 
     @GetMapping("/{id}")
-    public Zone getStudent(@PathVariable Long id) {
-        return zs.getViewByID(id);
+    public Zone getZone(@PathVariable Long id) {
+        return zs.getZoneById(Long id);
     }
 
-    @PutMapping("/{id}")
-    public Location updateStudent(
+    @PutMapping("/{id}/deactivate")
+    public Zone update(
             @PathVariable Long id,
-            @Valid @RequestBody Location student) {
-        return lcs.updateStudent(id, student);
+            @Valid @RequestBody Zone update) {
+        return lcs.updateZone(Long id,Zone zone);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteStudent(@PathVariable Long id) {
-        lcs.deleteStudent(id);
-        return ResponseEntity.ok("Student deleted successfully");
+     @PutMapping("/{id}")
+    public Zone update(
+            @PathVariable Long id,
+            @Valid @RequestBody Zone update) {
+        return lcs.updateZone(Long id,Zone zone);
     }
+
+
 }
