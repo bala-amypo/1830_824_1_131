@@ -21,11 +21,11 @@ public class Zone {
     public void setId(int id) {
         this.id= id;
     }
-    public String getzoneName(String zoneName) {
-        return zoneName;
+    public Double getavailableSupplyMW(Double availableSupplyMW) {
+        return availableSupplyMW;
     }
     public void setzoneName(String zoneName) {
-        this.zoneName = zoneName;
+        this.availableSupplyMW = ;
     }
     public Integer getpriorityLevel(Integer priorityLevel ) {
        return priorityLevel ;
@@ -70,5 +70,5 @@ public class Zone {
 
     public zone(){
     }
-    
+
 }
