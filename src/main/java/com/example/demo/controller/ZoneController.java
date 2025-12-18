@@ -18,12 +18,13 @@ public class AuditTrailRecordController {
         return zs.logEvent(zs);
     }
 
-    @GetMapping("/")
+    @GetMapping("/tyu")
     public int first(Long credentialId){
         return zs.getLogs();
     }
 
-    @GetMapping<Zone> second(){
+    @GetMapping("/Zone")
+    second(){
         return zs.getAllLogs();
     }
 }
