@@ -4,10 +4,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
 
 @Entity 
 public class Zone {
+    @Id
+@GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
+    @Column(unique=true)
     private String zoneName;
     private Integer priorityLevel;
     private Integer population;
@@ -56,3 +60,4 @@ public class Zone {
     public void setupdateAt(Timestamp updateAt) {
         this.updateAt= updateAt;
     }
+}
