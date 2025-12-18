@@ -34,38 +34,22 @@ public class Zone {
         this.forecastStart= forecastStart;
     }
     public Timestamp getforecastEnd(Timestamp forecastEnd) {
-        return population ;
+        return forecastEnd;
     }
-    public void setpopulation(Integer population) {
-        this.population= population;
+    public Timestamp setforecastEnd(Timestamp forecastEnd) {
+        this.forecastEnd= forecastEnd;
     }
-    public Boolean getactive(Boolean active ) {
+    public Timestamp getgeneratedAt(Timestamp generatedAt ) {
      return active;
     }
-    public void setactive(Boolean active) {
-        this.active= active;
+    public void setgeneratedAt(Timestamo generatedAt) {
+        this.generatedAt= generatedAt;
     }
-    public Timestamp getcreateAt(Timestamp createdAt ) {
-      return createdAt; 
-    }
-    public void setcreateAt(Timestamp createdAt) {
-        this.createdAt= createdAt;
-    }
-    public Timestamp getupdateAt(Timestamp updateAt ) {
-      return updateAt;
-    }
-    public void setupdateAt(Timestamp updateAt) {
-        this.updateAt= updateAt;
-    }
-
-    public zone(Long id, String zoneName, Integer priorityLevel, Integer population, Boolean active, Timestamp createdAt, Timestamp updatedAt){
-        this.id=id;
-        this.zoneName=zoneName;
-        this.priorityLevel= priorityLevel;
-        this.popultion=population;
-        this.active=active;
-        this.createAt=createAt;
-        this.updatedAt=updateAt;
+    
+    public zone( long id,Double availableSupplyMW,Timestamp forecastStart,Timestamp forecastEnd,Timestamp generatedAt){
+        this id = id;
+        this availableSupplyMW = availableSupplyMW;
+        this forecastStart = forecast
     }
 
     public zone(){
