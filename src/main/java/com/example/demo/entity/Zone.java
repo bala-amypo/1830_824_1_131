@@ -1,5 +1,4 @@
 package com.example.demo.entity;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
@@ -61,14 +60,7 @@ public class Zone {
         this.updateAt= updateAt;
     }
 
-    public  zone(  long id,
-   String zoneName,
-  Integer priorityLevel,
-    Integer population,
-    Boolean active,
-    Timestamp createAt,
-     Timestamp updatedAt){
-
+    public  zone(long id, String zoneName, Integer priorityLevel, Integer population, Boolean active, Timestamp createAt, Timestamp updatedAt){
         this.id=id;
         this.priorityLevel= priorityLevel;
         this.popultion=population;
