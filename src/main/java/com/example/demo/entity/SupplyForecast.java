@@ -24,11 +24,11 @@ public class Zone {
     public Double getavailableSupplyMW(Double availableSupplyMW) {
         return availableSupplyMW;
     }
-    public void setavailableSupplyMW(Double ) {
+    public void setavailableSupplyMW(Double availableSupplyMW) {
         this.availableSupplyMW = availableSupplyMW;
     }
-    public Integer getpriorityLevel(Integer priorityLevel ) {
-       return priorityLevel ;
+    public Timestamp getforecastStart(Timestamp forecast ) {
+       return forecast ;
     }
     public void setpriorityLevel(Integer priorityLevel) {
         this.priorityLevel= priorityLevel;
