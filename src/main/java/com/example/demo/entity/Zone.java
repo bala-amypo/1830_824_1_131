@@ -19,10 +19,10 @@ public class Zone {
         this.zoneName = zoneName;
     }
     public void setEmail(String email) {
-        this.priority = email;
+        this.priorityLevel = priorityLevel;
     }
     public void setPhno(String phno) {
-        this.phno = phno;
+        this.population = population;
     }
     public void setAddress(String address) {
         this.address = address;
