@@ -17,50 +17,50 @@ public class Zone {
     private Boolean active;
     private Timestamp createdAt;
     private Timestamp updatedAt;
-    public long getId(int id) {
+    public long getId() {
       return id;
     }
     public void setId(int id) {
         this.id= id;
     }
-    public String getzoneName(String zoneName) {
+    public String getzoneName() {
         return zoneName;
     }
     public void setzoneName(String zoneName) {
         this.zoneName = zoneName;
     }
-    public Integer getpriorityLevel(Integer priorityLevel ) {
+    public Integer getpriorityLevel() {
        return priorityLevel ;
     }
     public void setpriorityLevel(Integer priorityLevel) {
         this.priorityLevel= priorityLevel;
     }
-    public Integer getpopulation(Integer population ) {
+    public Integer getpopulation() {
         return population ;
     }
     public void setpopulation(Integer population) {
         this.population= population;
     }
-    public Boolean getactive(Boolean active ) {
+    public Boolean getactive() {
      return active;
     }
     public void setactive(Boolean active) {
         this.active= active;
     }
-    public Timestamp getcreateAt(Timestamp createdAt ) {
+    public Timestamp getcreateAt() {
       return createdAt; 
     }
     public void setcreateAt(Timestamp createdAt) {
         this.createdAt= createdAt;
     }
-    public Timestamp getupdateAt(Timestamp updateAt ) {
+    public Timestamp getupdateAt() {
       return updateAt;
     }
     public void setupdateAt(Timestamp updateAt) {
         this.updateAt= updateAt;
     }
 
-    public zone(Long id, String zoneName, Integer priorityLevel, Integer population, Boolean active, Timestamp createdAt, Timestamp updatedAt){
+    public Zone(Long id, String zoneName, Integer priorityLevel, Integer population, Boolean active, Timestamp createdAt, Timestamp updatedAt){
         this.id=id;
         this.zoneName=zoneName;
         this.priorityLevel= priorityLevel;
@@ -70,6 +70,7 @@ public class Zone {
         this.updatedAt=updateAt;
     }
 
-    public zone(){
+    public Zone(){
+
     }
 }
