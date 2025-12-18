@@ -35,7 +35,7 @@ public class SupplyForecast {
     public Timestamp getforecastEnd() {
         return forecastEnd;
     }
-    public Timestamp setforecastEnd(Timestamp forecastEnd) {
+    public void setforecastEnd(Timestamp forecastEnd) {
         this.forecastEnd= forecastEnd;
     }
     public Timestamp getgeneratedAt() {
