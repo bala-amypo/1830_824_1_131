@@ -23,7 +23,7 @@ public class AuditTrailRecordController {
         return zs.getLogs();
     }
 
-    @GetMapping<> second(){
+    @GetMapping<Zone> second(){
         return zs.getAllLogs();
     }
 }
