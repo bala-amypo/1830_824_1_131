@@ -39,9 +39,9 @@ public class SupplyForecast {
         this.forecastEnd= forecastEnd;
     }
     public Timestamp getgeneratedAt() {
-     return active;
+     return generatedAt;
     }
-    public void setgeneratedAt(Timestamo generatedAt) {
+    public void setgeneratedAt(Timestamp generatedAt) {
         this.generatedAt= generatedAt;
     }
     
