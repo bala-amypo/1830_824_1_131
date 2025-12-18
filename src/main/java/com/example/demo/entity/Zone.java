@@ -26,9 +26,21 @@ public class Zone {
     public void setzoneName(String zoneName) {
         this.zoneName = zoneName;
     }
-    public Integer getInteger(int id) {
-        this.id = id;
+    public Integer getpriorityLevel(Integer priorityLevel ) {
+        this.priorityLevel = priorityLevel;
     }
-    public void setId(int id) {
-        this.id= id;
+    public void setpriorityLevel(Integer priorityLevel) {
+        this.priorityLevel= priorityLevel;
+    }
+    public Integer getpopulation(Integer population ) {
+        this.population = population;
+    }
+    public void setpopulation(Integer population) {
+        this.population= population;
+    }
+    public Boolean getactive(Integer population ) {
+        this.population = population;
+    }
+    public void setpopulation(Integer population) {
+        this.population= population;
     }
