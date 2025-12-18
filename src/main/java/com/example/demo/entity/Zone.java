@@ -38,9 +38,21 @@ public class Zone {
     public void setpopulation(Integer population) {
         this.population= population;
     }
-    public Boolean getactive(Integer population ) {
-        this.population = population;
+    public Boolean getactive(Boolean active ) {
+        this.active = active;
     }
-    public void setpopulation(Integer population) {
-        this.population= population;
+    public void setactive(Boolean active) {
+        this.active= active;
+    }
+    public Timestamp getcreateAt(Timestamp createAt ) {
+        this.createAt = createAt;
+    }
+    public void setcreateAt(Timestamp createAt) {
+        this.createAt= createAt;
+    }
+    public Timestamp getupdateAt(Timestamp updateAt ) {
+        this.updateAt = updateAt;
+    }
+    public void setupdateAt(Timestamp updateAt) {
+        this.updateAt= updateAt;
     }
