@@ -16,7 +16,7 @@ public class LocationController {
     // for post the data
     @PostMapping("/api/zones")
     public Zone addZone(@Valid @RequestBody Zone zsc) {
-        return zs.createzone(zsc);
+        return zs.createZone(Zone zone);
     }
 
     // for get all the data in list view
@@ -30,18 +30,18 @@ public class LocationController {
         return zs.getZoneById(Long id);
     }
 
-    @PutMapping("/{id}/deactivate")
+    @PutMapping("/{id}")
     public Zone update(
             @PathVariable Long id,
             @Valid @RequestBody Zone update) {
         return lcs.updateZone(Long id,Zone zone);
     }
 
-     @PutMapping("/{id}")
+     @PutMapping("/{id}/deactivate")
     public Zone update(
             @PathVariable Long id,
             @Valid @RequestBody Zone update) {
-        return lcs.updateZone(Long id,Zone zone);
+        return lcs.deactivateZone(Long id);
     }
 
 
