@@ -47,27 +47,27 @@ public class Zone {
     public void setactive(Boolean active) {
         this.active= active;
     }
-    public Timestamp getcreateAt() {
+    public Timestamp getcreatedAt() {
       return createdAt; 
     }
-    public void setcreateAt(Timestamp createdAt) {
+    public void setcreatedAt(Timestamp createdAt) {
         this.createdAt= createdAt;
     }
-    public Timestamp getupdateAt() {
-      return updateAt;
+    public Timestamp getupdatedAt() {
+      return updatedAt;
     }
-    public void setupdateAt(Timestamp updateAt) {
-        this.updateAt= updateAt;
+    public void setupdatedAt(Timestamp updatedAt) {
+        this.updatedAt= updatedAt;
     }
 
     public Zone(Long id, String zoneName, Integer priorityLevel, Integer population, Boolean active, Timestamp createdAt, Timestamp updatedAt){
         this.id=id;
         this.zoneName=zoneName;
         this.priorityLevel= priorityLevel;
-        this.popultion=population;
+        this.population=population;
         this.active=active;
-        this.createAt=createAt;
-        this.updatedAt=updateAt;
+        this.createdAt=createdAt;
+        this.updatedAt=updatedAt;
     }
 
     public Zone(){
