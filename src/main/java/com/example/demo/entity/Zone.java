@@ -20,9 +20,15 @@ public class Zone {
     public void setId(int id) {
         this.id= id;
     }
-    public void setName() {
+    public String setzoneName(String zoneName) {
+        this.zoneName = zoneName;
+    }
+    public void setzoneName(String zoneName) {
+        this.zoneName = zoneName;
+    }
+    public Integer getInteger(int id) {
         this.id = id;
     }
-    public void setName(String name) {
-        this.zoneName = zoneName;
+    public void setId(int id) {
+        this.id= id;
     }
