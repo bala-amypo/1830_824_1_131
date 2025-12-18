@@ -1,9 +1,11 @@
 package com.example.collectiondb.entity;
 
+import jakarta.
+@entity
 public class Zone {
     private long id;
     private String zoneName;
-    private Integer  priorityLevel;
+    private Integer priorityLevel;
     private Integer population;
     private Boolean address;
     public long getId(int id) {
