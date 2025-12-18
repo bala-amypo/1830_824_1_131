@@ -11,7 +11,9 @@ public class Zone {
     private String zoneName;
     private Integer priorityLevel;
     private Integer population;
-    private Boolean address;
+    private Boolean active;
+    private Timestamp createAt;
+    private Timestamp updatedAt;
     public long getId(int id) {
         this.id = id;
     }
@@ -25,7 +27,7 @@ public class Zone {
         this.population = population;
     }
     public void setAddress(String address) {
-        this.address = address;
+        this.active = active;
     }
 
 
