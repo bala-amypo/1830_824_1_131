@@ -19,43 +19,43 @@ public class Zone {
     private Timestamp createAt;
     private Timestamp updatedAt;
     public long getId(int id) {
-        this.id = id;
+      return id;
     }
     public void setId(int id) {
         this.id= id;
     }
     public String getzoneName(String zoneName) {
-        return 
+        return zoneName;
     }
     public void setzoneName(String zoneName) {
         this.zoneName = zoneName;
     }
     public Integer getpriorityLevel(Integer priorityLevel ) {
-        this.priorityLevel = priorityLevel;
+       return priorityLevel ;
     }
     public void setpriorityLevel(Integer priorityLevel) {
         this.priorityLevel= priorityLevel;
     }
     public Integer getpopulation(Integer population ) {
-        this.population = population;
+        return population ;
     }
     public void setpopulation(Integer population) {
         this.population= population;
     }
     public Boolean getactive(Boolean active ) {
-        this.active = active;
+     return active;
     }
     public void setactive(Boolean active) {
         this.active= active;
     }
     public Timestamp getcreateAt(Timestamp createAt ) {
-        this.createAt = createAt;
+      return createAt; 
     }
     public void setcreateAt(Timestamp createAt) {
         this.createAt= createAt;
     }
     public Timestamp getupdateAt(Timestamp updateAt ) {
-        this.updateAt = updateAt;
+      return updateAt;
     }
     public void setupdateAt(Timestamp updateAt) {
         this.updateAt= updateAt;
