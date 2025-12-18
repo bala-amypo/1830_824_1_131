@@ -16,10 +16,10 @@ public class Zone {
         this.id = id;
     }
     public void setName(String name) {
-        this.name = name;
+        this.zoneName = zoneName;
     }
     public void setEmail(String email) {
-        this.email = email;
+        this.priority = email;
     }
     public void setPhno(String phno) {
         this.phno = phno;
