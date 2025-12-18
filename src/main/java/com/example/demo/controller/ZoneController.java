@@ -21,13 +21,13 @@ public class LocationController {
 
     // for get all the data in list view
     @GetMapping
-    public List<Location> getAll() {
-        return lcs.getAllLocations();
+    public List<Zone> getAll() {
+        return zs.getAllZone();
     }
 
     @GetMapping("/{id}")
-    public Location getStudent(@PathVariable Long id) {
-        return lcs.getViewByID(id);
+    public Zone getStudent(@PathVariable Long id) {
+        return zs.getViewByID(id);
     }
 
     @PutMapping("/{id}")
