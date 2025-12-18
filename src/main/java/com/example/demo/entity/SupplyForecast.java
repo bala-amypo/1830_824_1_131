@@ -24,8 +24,8 @@ public class Zone {
     public Double getavailableSupplyMW(Double availableSupplyMW) {
         return availableSupplyMW;
     }
-    public void setzoneName(String zoneName) {
-        this.availableSupplyMW = ;
+    public void setavailableSupplyMW(Double ) {
+        this.availableSupplyMW = availableSupplyMW;
     }
     public Integer getpriorityLevel(Integer priorityLevel ) {
        return priorityLevel ;
