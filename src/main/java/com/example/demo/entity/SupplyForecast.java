@@ -10,13 +10,11 @@ public class Zone {
     @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
-    @Column(unique=true)
-    private S zoneName;
-    private Integer priorityLevel;
-    private Integer population;
-    private Boolean active;
-    private Timestamp createdAt;
-    private Timestamp updatedAt;
+   
+    private Double availableSupplyMW;
+    private Timestamp forecastStart;
+    private Timestamp forecastEnd;
+    private Timestamp generatedAt;
     public long getId(int id) {
       return id;
     }
@@ -72,4 +70,5 @@ public class Zone {
 
     public zone(){
     }
+    
 }
