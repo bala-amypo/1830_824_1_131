@@ -17,19 +17,12 @@ public class Zone {
     public long getId(int id) {
         this.id = id;
     }
+    public void setId(int id) {
+        this.id= id;
+    }
+    public void setName() {
+        this.id = id;
+    }
     public void setName(String name) {
         this.zoneName = zoneName;
     }
-    public void setEmail(String email) {
-        this.priorityLevel = priorityLevel;
-    }
-    public void setPhno(String phno) {
-        this.population = population;
-    }
-    public void setAddress(String address) {
-        this.active = active;
-    }
-
-
-    
-}
