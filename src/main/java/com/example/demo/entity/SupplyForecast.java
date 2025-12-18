@@ -27,13 +27,13 @@ public class Zone {
     public void setavailableSupplyMW(Double availableSupplyMW) {
         this.availableSupplyMW = availableSupplyMW;
     }
-    public Timestamp getforecastStart(Timestamp forecast ) {
-       return forecast ;
+    public Timestamp getforecastStart(Timestamp forecastStart ) {
+       return forecastStart ;
     }
-    public void setpriorityLevel(Integer priorityLevel) {
-        this.priorityLevel= priorityLevel;
+    public void setforecastStart(Timestamp forecastStart) {
+        this.forecastStart= forecastStart;
     }
-    public Integer getpopulation(Integer population ) {
+    public Timestamp getforecastEnd(Timestamp forecastEnd) {
         return population ;
     }
     public void setpopulation(Integer population) {
