@@ -8,13 +8,12 @@ import com.example.demo.entity.SupplyForecast;
 @Service
 public class SupplyForecastService{
     createForecast(SupplyForecast forecast)
-    updateForecast(Longid,SupplyForecast forecast)
-    
+    updateForecast(Long id,SupplyForecast forecast)
+    getForecastById(Long id)
+    getLatestForecast()
+    getAllForecasts()
 }   
 
 
 
 
-
-
-studentService.java
