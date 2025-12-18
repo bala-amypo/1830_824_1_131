@@ -60,7 +60,7 @@ public class Zone {
         this.updateAt= updateAt;
     }
 
-    public zone(long id, String zoneName, Integer priorityLevel, Integer population, Boolean active, Timestamp createdAt, Timestamp updatedAt){
+    public zone(Long id, String zoneName, Integer priorityLevel, Integer population, Boolean active, Timestamp createdAt, Timestamp updatedAt){
         this.id=id;
         this.zoneName=zoneName;
         this.priorityLevel= priorityLevel;
