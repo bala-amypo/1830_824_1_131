@@ -8,23 +8,38 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.entity.Zone;
 import com.example.demo.service.ZoneService;
 
-@RestController
-public class AuditTrailRecordController {
+public class LocationController {
+
     @Autowired
     ZoneService zs;
 
-    @PostMapping("/Zone")
-    public Zone addZone(@RequestBody Zone zs){
-        return zs.logEvent(zs);
+    // for post the data
+    @PostMapping("/api/zones")
+    public Zone addZone(@Valid @RequestBody Zone zsc) {
+        return zs.createzone(zsc);
     }
 
-    @GetMapping("/tyu")
-    public int first(Long credentialId){
-        return zs.getLogs();
+    // for get all the data in list view
+    @GetMapping
+    public List<Location> getAll() {
+        return lcs.getAllLocations();
     }
 
-    @GetMapping("/Zone")
-    second(){
-        return zs.getAllLogs();
+    @GetMapping("/{id}")
+    public Location getStudent(@PathVariable Long id) {
+        return lcs.getViewByID(id);
+    }
+
+    @PutMapping("/{id}")
+    public Location updateStudent(
+            @PathVariable Long id,
+            @Valid @RequestBody Location student) {
+        return lcs.updateStudent(id, student);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteStudent(@PathVariable Long id) {
+        lcs.deleteStudent(id);
+        return ResponseEntity.ok("Student deleted successfully");
     }
 }
