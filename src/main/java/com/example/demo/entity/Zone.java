@@ -5,7 +5,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
-
+import java.security.Timestamp;
 @Entity 
 public class Zone {
     @Id
@@ -24,7 +24,7 @@ public class Zone {
     public void setId(int id) {
         this.id= id;
     }
-    public String setzoneName(String zoneName) {
+    public String getzoneName(String zoneName) {
         this.zoneName = zoneName;
     }
     public void setzoneName(String zoneName) {
@@ -60,4 +60,6 @@ public class Zone {
     public void setupdateAt(Timestamp updateAt) {
         this.updateAt= updateAt;
     }
+
+    public  zone
 }
