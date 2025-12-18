@@ -25,7 +25,7 @@ public class Zone {
         this.id= id;
     }
     public String getzoneName(String zoneName) {
-        this.zoneName = zoneName;
+        return 
     }
     public void setzoneName(String zoneName) {
         this.zoneName = zoneName;
@@ -61,5 +61,25 @@ public class Zone {
         this.updateAt= updateAt;
     }
 
-    public  zone
+    public  zone(  long id,
+   String zoneName,
+  Integer priorityLevel,
+    Integer population,
+    Boolean active,
+    Timestamp createAt,
+     Timestamp updatedAt){
+
+        this.id=id;
+        this.priorityLevel= priorityLevel;
+        this.popultion=population;
+        this.active=active;
+        this.createAt=createAt;
+        this.updateAt=updateAt;
+
+
+    }
+
+    public zone(){
+
+    }
 }
