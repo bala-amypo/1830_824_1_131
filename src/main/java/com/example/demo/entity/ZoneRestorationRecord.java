@@ -8,7 +8,7 @@ import jakarta.persistence.GenerationType;
 import java.sql.Timestamp;
 
 @Entity
-public class DemandReading {
+public class ZoneRestorationRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,12 +16,14 @@ public class DemandReading {
 
     private String zone;
     private Double demandMW;
-    private Timestamp eventStart;
+    private Timestamp restoredAt;
+    private Long 
 
-    public DemandReading() {
+
+    public ZoneRestorationRecord() {
     }
 
-    public DemandReading(Long id, String zone, Double demandMW, Timestamp recordedAt) {
+    public ZoneRestorationRecord(Long id, String zone, Double demandMW, Timestamp recordedAt) {
         this.id = id;
         this.zone = zone;
         this.demandMW = demandMW;
@@ -52,11 +54,11 @@ public class DemandReading {
         this.demandMW = demandMW;
     }
 
-    public Timestamp getRecordedAt() {
+    public Timestamp getrecordedAt() {
         return recordedAt;
     }
 
-    public void setRecordedAt(Timestamp recordedAt) {
+    public void setrecordedAt(Timestamp recordedAt) {
         this.recordedAt = recordedAt;
     }
 }
