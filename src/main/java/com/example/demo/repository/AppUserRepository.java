@@ -1,11 +1,11 @@
-package com.example.demo.repository;
+// package com.example.demo.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+// import org.springframework.data.jpa.repository.JpaRepository;
+// import org.springframework.stereotype.Repository;
 
-import com.example.demo.entity.AppUserRepository;
+// import com.example.demo.entity.AppUserRepository;
 
-@Repository
-public interface  AppUserRepository extends JpaRepository<AppUserRepository, Long>{
+// @Repository
+// public interface  AppUserRepository extends JpaRepository<AppUserRepository, Long>{
 
-}
+// }

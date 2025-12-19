@@ -1,11 +1,11 @@
-package com.example.demo.repository;
+// package com.example.demo.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+// import org.springframework.data.jpa.repository.JpaRepository;
+// import org.springframework.stereotype.Repository;
 
-import com.example.demo.entity.DemandReadingRepository;
+// import com.example.demo.entity.DemandReadingRepository;
 
-@Repository
-public interface DemandReadingRepository extends JpaRepository<DemandReadingRepository, Long>{
+// @Repository
+// public interface DemandReadingRepository extends JpaRepository<DemandReadingRepository, Long>{
 
-}
+// }
