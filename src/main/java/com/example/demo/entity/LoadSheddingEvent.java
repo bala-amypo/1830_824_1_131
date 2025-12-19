@@ -5,7 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import java.security.Timestamp;
 @Entity 
-public class  {
+public class LoadSheddingEvent {
     @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
@@ -60,7 +60,7 @@ public class  {
     }
 
     
-    public SupplyForecast( long id,Double expectedDemandReductionMW ,Timestamp eventStart,Timestamp eventEnd, String zone, String reason, Long triggeredByForecastId ){
+    public LoadSheddingEvent( long id,Double expectedDemandReductionMW ,Timestamp eventStart,Timestamp eventEnd, String zone, String reason, Long triggeredByForecastId ){
         this.id = id;
         this.expectedDemandReductionMW= expectedDemandReductionMW;
         this.eventStart = eventStart;
@@ -70,7 +70,7 @@ public class  {
         this.zone=zone;
     }
 
-    public SupplyForecast(){
+    public LoadSheddingEvent(){
     }
 
 }
