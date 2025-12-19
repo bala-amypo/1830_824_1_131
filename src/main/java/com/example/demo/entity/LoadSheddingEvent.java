@@ -26,25 +26,25 @@ public class SupplyForecast {
         return zone;
     }
     public void setzone(String zone) {
-        this.availableSupplyMW = availableSupplyMW;
+        this.zone = zone;
     }
-    public Timestamp geteventstart() {
+    public Timestamp geteventStart() {
        return eventstart ;
     }
-    public void seteventStart(Timestamp eventstart) {
-        this.eventstart= eventstart;
+    public void seteventStart(Timestamp eventStart) {
+        this.eventStart= evenStart;
     }
-    public Timestamp getforecastEnd() {
-        return forecastEnd;
+    public Timestamp geteventEnd() {
+        return eventEnd;
     }
-    public void setforecastEnd(Timestamp forecastEnd) {
-        this.forecastEnd= forecastEnd;
+    public void seteventEnd(Timestamp eventEnd) {
+        this.eventEnd= eventEnd;
     }
-    public Timestamp getgeneratedAt() {
-     return generatedAt;
+    public String getreason() {
+     return reason;
     }
-    public void setgeneratedAt(Timestamp generatedAt) {
-        this.generatedAt= generatedAt;
+    public void setreason(Timestamp reason) {
+        this.reason= generatedAt;
     }
     
     public SupplyForecast( long id,Double availableSupplyMW,Timestamp forecastStart,Timestamp forecastEnd,Timestamp generatedAt){
