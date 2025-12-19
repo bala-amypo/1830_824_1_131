@@ -56,7 +56,7 @@ public class SupplyForecast {
      return expectedDemandReductionMW;
     }
     public void setexpectedDemandReductionMW(Double expectedDemandReductionMW) {
-        this.triggeredByForecastId= triggeredByForecastId;
+        this.expectedDemandReductionMW= expectedDemandReductionMW;
     }
 
     
