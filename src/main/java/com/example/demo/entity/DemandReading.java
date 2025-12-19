@@ -1,51 +1,62 @@
 package com.example.demo.entity;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Column;
-import java.security.Timestamp;
-@Entity 
+
+import java.sql.Timestamp;
+
+@Entity
 public class DemandReading {
+
     @Id
-@GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String zone;
     private Double demandMW;
     private Timestamp recordedAt;
-   
-    public long getId() {
-      return id;
+
+    public DemandReading() {
     }
-    public void setId(int id) {
-        this.id= id;
+
+    public DemandReading(Long id, String zone, Double demandMW, Timestamp recordedAt) {
+        this.id = id;
+        this.zone = zone;
+        this.demandMW = demandMW;
+        this.recordedAt = recordedAt;
     }
-    public String getzone() {
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getZone() {
         return zone;
     }
-    public void setzone(String zone) {
+
+    public void setZone(String zone) {
         this.zone = zone;
     }
-    public Double getdemandMW() {
-       return demandMW ;
-    }
-    public void setdemandMW(Double demanMW) {
-        this.demandMW= demandMW;
-    }
-    public Timestamp getrecordedAt() {
-      return recordedAt; 
-    }
-    public void setrecordedAt(Timestamp recordedAt) {
-        this.recordedAt=recordedAt;
-    }
-    public DemandReading(Long id, String zone, Double demandMW, Timestamp recordedAt){
-        this.id=id;
-        this.zone=zone;
-        this.demandMW= demandMW;
-        this.recordedAt=recordedAt;
+
+    public Double getDemandMW() {
+        return demandMW;
     }
 
-    public DemandReading(){
+    public void setDemandMW(Double demandMW) {
+        this.demandMW = demandMW;
+    }
 
+    public Timestamp getRecordedAt() {
+        return recordedAt;
+    }
+
+    public void setRecordedAt(Timestamp recordedAt) {
+        this.recordedAt = recordedAt;
     }
 }
