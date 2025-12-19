@@ -12,11 +12,11 @@ import com.example.demo.service.ZoneService;
 
     
     @PostMapping
-     public ConflictCase createCase(@RequestBody ConflictCaseService conflictCaseService){
-        return conflictCaseService.createCase(conflictCaseService);
+     public Zone createCase(@RequestBody ZoneService ZoneService){
+        return ZoneService.createZone(Zone zone);
      }
-    @PutMapping("/{id}/status")
-    public ConflictCase updateCaseStatus(@PathVariable Long caseId,@RequestParam String status){
+    @PutMapping("/{id}")
+    public Zone update(@PathVariable Long caseId,@RequestParam String status){
         return conflictCaseService.updateCaseStatus(caseId,status);
 
     }
