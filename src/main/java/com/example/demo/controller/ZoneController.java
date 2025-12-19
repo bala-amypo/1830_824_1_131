@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.example.demo.entity.Zone;
 import com.example.demo.service.ZoneService;
@@ -16,7 +17,7 @@ import com.example.demo.service.ZoneService;
         return ZoneService.createZone(Zone zone);
      }
     @PutMapping("/{id}")
-    public Zone updateZone(@PathVariabl Long id,@RequestParam String ,Zone zone){
+    public Zone updateZone(@PathVariable Long id,@RequestParam String ,Zone zone){
         return ZoneService.updateZone(Long id,Zone zone);
 
     }
@@ -33,7 +34,7 @@ import com.example.demo.service.ZoneService;
     }
 
     @PutMapping("/{id}/deactivate")
-    public Zone deactivateZone(@PathVariabl Long id,@RequestParam String ,Zone zone){
+    public Zone deactivateZone(@PathVariable Long id){
         return ZoneService. deactivateZone(Long id);
 
     }
