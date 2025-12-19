@@ -60,11 +60,11 @@ public class SupplyForecast {
     }
 
     
-    public SupplyForecast( long id,Double expectedDemandReductionMW ,Timestamp eventStart,Timestamp eventEnd, S){
+    public SupplyForecast( long id,Double expectedDemandReductionMW ,Timestamp eventStart,Timestamp eventEnd, String zone, String reason, Long triggeredByForecastId ){
         this.id = id;
-        this.availableSupplyMW = availableSupplyMW;
-        this.forecastStart = forecastStart;
-        this.forecastEnd = forecastEnd;
+        this.expectedDemandReductionMW= expectedDemandReductionMW;
+        this.eventStart = eventStart;
+        this.eventEnd = eventEnd;
         this.generatedAt = generatedAt;
     }
 
