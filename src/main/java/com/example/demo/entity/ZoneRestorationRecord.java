@@ -15,9 +15,9 @@ public class ZoneRestorationRecord {
     private Long id;
 
     private String zone;
-    private Double demandMW;
     private Timestamp restoredAt;
-    private Long 
+    private Long eventId;
+    private String notes;
 
 
     public ZoneRestorationRecord() {
@@ -26,8 +26,8 @@ public class ZoneRestorationRecord {
     public ZoneRestorationRecord(Long id, String zone, Double demandMW, Timestamp recordedAt) {
         this.id = id;
         this.zone = zone;
-        this.demandMW = demandMW;
-        this.recordedAt = recordedAt;
+        this.eventId = eventId;
+        this.restoredAt = restoredAt;
     }
 
     public Long getId() {
