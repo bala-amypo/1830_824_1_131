@@ -22,17 +22,17 @@ public class SupplyForecast {
     public void setId(int id) {
         this.id= id;
     }
-    public Double getavailableSupplyMW() {
-        return availableSupplyMW;
+    public String getzone() {
+        return zone;
     }
-    public void setavailableSupplyMW(Double availableSupplyMW) {
+    public void setzone(String zone) {
         this.availableSupplyMW = availableSupplyMW;
     }
-    public Timestamp getforecastStart() {
-       return forecastStart ;
+    public Timestamp geteventstart() {
+       return eventstart ;
     }
-    public void setforecastStart(Timestamp forecastStart) {
-        this.forecastStart= forecastStart;
+    public void seteventStart(Timestamp eventstart) {
+        this.eventstart= eventstart;
     }
     public Timestamp getforecastEnd() {
         return forecastEnd;
