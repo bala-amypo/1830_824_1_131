@@ -1,3 +1,5 @@
+package com.example.demo.entity;
+
 import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -32,8 +34,9 @@ public class AppUser {
     @Column(nullable = false)
     private Boolean active = true;
 
-    // Constructors
-    public AppUser() {}
+    // Required by JPA
+    public AppUser() {
+    }
 
     public AppUser(String email, String password, Boolean active) {
         this.email = email;
@@ -42,8 +45,13 @@ public class AppUser {
     }
 
     // Getters and Setters
+
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getEmail() {
@@ -52,10 +60,6 @@ public class AppUser {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getPassword() {
