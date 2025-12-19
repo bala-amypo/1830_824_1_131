@@ -22,9 +22,9 @@ import com.example.demo.service.ZoneService;
     }
     
 
-    @GetMapping("/person/{personId}")
-    public List<ConflictCase>getCasesByPerson(@PathVariable Long personId) {
-        return conflictCaseService.getCasesByPerson(personId);
+    @GetMapping("/{id}")
+    public List<Zone>getZoneById(@PathVariable Long Id) {
+        return ZoneService.getZoneById(Long id)(personId);
     }
 
     @GetMapping("/{id}")
