@@ -1,84 +1,84 @@
-// import jakarta.persistence.*;
-// import java.util.HashSet;
-// import java.util.Set;
+import jakarta.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
-// @Entity
-// @Table(
-//     name = "app_user",
-//     uniqueConstraints = {
-//         @UniqueConstraint(columnNames = "email")
-//     }
-// )
-// public class AppUser {
+@Entity
+@Table(
+    name = "app_user",
+    uniqueConstraints = {
+        @UniqueConstraint(columnNames = "email")
+    }
+)
+public class AppUser {
 
-//     @Id
-//     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//     private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-//     @Column(nullable = false, unique = true)
-//     private String email;
+    @Column(nullable = false, unique = true)
+    private String email;
 
-//     @Column(nullable = false)
-//     private String password;
+    @Column(nullable = false)
+    private String password;
 
-//     @ManyToMany(fetch = FetchType.EAGER)
-//     @JoinTable(
-//         name = "app_user_roles",
-//         joinColumns = @JoinColumn(name = "user_id"),
-//         inverseJoinColumns = @JoinColumn(name = "role_id")
-//     )
-//     private Set<Role> roles = new HashSet<>();
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "app_user_roles",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles = new HashSet<>();
 
-//     @Column(nullable = false)
-//     private Boolean active = true;
+    @Column(nullable = false)
+    private Boolean active = true;
 
-//     // Constructors
-//     public AppUser() {}
+    // Constructors
+    public AppUser() {}
 
-//     public AppUser(String email, String password, Boolean active) {
-//         this.email = email;
-//         this.password = password;
-//         this.active = active;
-//     }
+    public AppUser(String email, String password, Boolean active) {
+        this.email = email;
+        this.password = password;
+        this.active = active;
+    }
 
-//     // Getters and Setters
-//     public Long getId() {
-//         return id;
-//     }
+    // Getters and Setters
+    public Long getId() {
+        return id;
+    }
 
-//     public String getEmail() {
-//         return email;
-//     }
+    public String getEmail() {
+        return email;
+    }
 
-//     public void setEmail(String email) {
-//         this.email = email;
-//     }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-//     public void setId(Long id) {
-//         this.id = id;
-//     }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-//     public String getPassword() {
-//         return password;
-//     }
+    public String getPassword() {
+        return password;
+    }
  
-//     public void setPassword(String password) {
-//         this.password = password;
-//     }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-//     public Set<Role> getRoles() {
-//         return roles;
-//     }
+    public Set<Role> getRoles() {
+        return roles;
+    }
 
-//     public void setRoles(Set<Role> roles) {
-//         this.roles = roles;
-//     }
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 
-//     public Boolean getActive() {
-//         return active;
-//     }
+    public Boolean getActive() {
+        return active;
+    }
 
-//     public void setActive(Boolean active) {
-//         this.active = active;
-//     }
-// }
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+}
