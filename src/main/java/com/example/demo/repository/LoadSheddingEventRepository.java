@@ -2,8 +2,8 @@
 
 // import org.springframework.data.jpa.repository.JpaRepository;
 // import org.springframework.stereotype.Repository;
-
-// import com.example.demo.entity.LoadSheddingEventRepository;
+y
+// import com.example.demo.entity.LoadSheddingEvent;
 
 // @Repository
 // public interface LoadSheddingEventRepository extends JpaRepository<LoadSheddingEventRepository, Long>{

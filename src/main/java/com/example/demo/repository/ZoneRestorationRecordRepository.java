@@ -1,11 +1,11 @@
-package com.example.demo.repository;
+// package com.example.demo.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+// import org.springframework.data.jpa.repository.JpaRepository;
+// import org.springframework.stereotype.Repository;
 
-import com.example.demo.entity.ZoneRestorationRecordRepository;
+// import com.example.demo.entity.ZoneRestorationRecord; // ✅ correct import
 
-@Repository
-public interface ZoneRestorationRecordRepository extends JpaRepository<ZoneRestorationRecordRepository , Long>{
-
-}
+// @Repository
+// public interface ZoneRestorationRecordRepository
+//         extends JpaRepository<ZoneRestorationRecord, Long> {
+// }
