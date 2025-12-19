@@ -1,48 +1,44 @@
-package com.example.demo.controller;
+//ConflictCaseController.java                                                                                                                                                                                      package com.example.demo.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.entity.Zone;
-import com.example.demo.service.ZoneService;
+import com.example.demo.entity.ConflictCase;
+import com.example.demo.service.ConflictCaseService;
 
-public class LocationController {
+    
+    @PostMapping
+     public ConflictCase createCase(@RequestBody ConflictCaseService conflictCaseService){
+        return conflictCaseService.createCase(conflictCaseService);
+     }
+    @PutMapping("/{id}/status")
+    public ConflictCase updateCaseStatus(@PathVariable Long caseId,@RequestParam String status){
+        return conflictCaseService.updateCaseStatus(caseId,status);
 
-    @Autowired
-    ZoneService zs;
-
-    // for post the data
-    @PostMapping("/api/zones")
-    public Zone addZone(@Valid @RequestBody Zone zsc) {
-        return zs.createZone(Zone zone);
     }
+    
 
-    // for get all the data in list view
-    @GetMapping
-    public List<Zone> getAll() {
-        return zs.getAllZones();
+    @GetMapping("/person/{personId}")
+    public List<ConflictCase>getCasesByPerson(@PathVariable Long personId) {
+        return conflictCaseService.getCasesByPerson(personId);
     }
 
     @GetMapping("/{id}")
-    public Zone getZone(@PathVariable Long id) {
-        return zs.getZoneById(Long id);
+    public List<ConflictCase>getCasesById(@PathVariable Long id) {
+        return conflictCaseService.getCasesById(id);
     }
 
-    @PutMapping("/{id}")
-    public Zone update(
-            @PathVariable Long id,
-            @Valid @RequestBody Zone update) {
-        return lcs.updateZone(Long id,Zone zone);
+    @GetMapping
+    public List<ConflictCase>getAllCases(){
+        return conflictCaseService.getAllCases();
     }
-
-     @PutMapping("/{id}/deactivate")
-    public Zone update(
-            @PathVariable Long id,
-            @Valid @RequestBody Zone update) {
-        return lcs.deactivateZone(Long id);
-    }
-
-
+    
 }
