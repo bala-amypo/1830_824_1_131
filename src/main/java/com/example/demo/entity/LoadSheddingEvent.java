@@ -46,7 +46,7 @@ public class SupplyForecast {
     public void setreason(Timestamp reason) {
         this.reason= reason;
     }
-    public () {
+    public Long gettriggeredBy() {
      return reason;
     }
     public void setreason(Timestamp reason) {
