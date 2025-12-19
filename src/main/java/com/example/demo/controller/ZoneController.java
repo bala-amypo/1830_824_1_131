@@ -22,19 +22,14 @@ import com.example.demo.service.ZoneService;
     }
     
 
-    @GetMapping("/{id}")
-    public List<Zone>getZoneById(@PathVariable Long Id) {
-        return ZoneService.getZoneById(Long id)(personId);
-    }
-
-    @GetMapping("/{id}")
-    public List<ConflictCase>getCasesById(@PathVariable Long id) {
-        return conflictCaseService.getCasesById(id);
-    }
-
     @GetMapping
-    public List<ConflictCase>getAllCases(){
-        return conflictCaseService.getAllCases();
+    public List<Zone>getZoneById(@PathVariable Long Id) {
+        return ZoneService.getZoneById(Long id);
+    }
+
+    @GetMapping("/{id}")
+    public Zone getAllZones() {
+        return lcs.getViewByID(id);
     }
     
 }
