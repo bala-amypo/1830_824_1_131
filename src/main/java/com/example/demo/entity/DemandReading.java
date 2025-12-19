@@ -10,29 +10,26 @@ public class Zone {
     @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
-    @Column(unique=true)
     private String zone;
-    private Integer priorityLevel;
-    private Integer population;
-    private Boolean active;
-    private Timestamp createdAt;
-    private Timestamp updatedAt;
+    private Double demandMW;
+    private Timestamp recordedAt;
+   
     public long getId() {
       return id;
     }
     public void setId(int id) {
         this.id= id;
     }
-    public String getzoneName() {
-        return zoneName;
+    public String getzone() {
+        return zone;
     }
-    public void setzoneName(String zoneName) {
-        this.zoneName = zoneName;
+    public void setzone(String zone) {
+        this.zoneName = zone;
     }
-    public Integer getpriorityLevel() {
-       return priorityLevel ;
+    public Double getdemandMW() {
+       return demandMW ;
     }
-    public void setpriorityLevel(Integer priorityLevel) {
+    public void setdemandMW() {
         this.priorityLevel= priorityLevel;
     }
     public Integer getpopulation() {
