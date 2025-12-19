@@ -10,7 +10,7 @@ import com.example.demo.service.ZoneService;
 
 @RestController
 @RequestMapping("/zones")
-public class ConflictCaseController {
+public class ZoneController {
 
     @Autowired
     private ZoneService zoneService;
