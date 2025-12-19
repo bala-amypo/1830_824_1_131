@@ -24,40 +24,21 @@ public class Zone {
         return zone;
     }
     public void setzone(String zone) {
-        this.zoneName = zone;
+        this.zone = zone;
     }
     public Double getdemandMW() {
        return demandMW ;
     }
-    public void setdemandMW() {
-        this.priorityLevel= priorityLevel;
+    public void setdemandMW(Double demanMW) {
+        this.demandMW= demandMW;
     }
-    public Integer getpopulation() {
-        return population ;
+    public Timestamp getrecordedAt() {
+      return recordedAt; 
     }
-    public void setpopulation(Integer population) {
-        this.population= population;
+    public void setrecordedAt(Timestamp recordedAt) {
+        this.recordedAt=recordedAt;
     }
-    public Boolean getactive() {
-     return active;
-    }
-    public void setactive(Boolean active) {
-        this.active= active;
-    }
-    public Timestamp getcreatedAt() {
-      return createdAt; 
-    }
-    public void setcreatedAt(Timestamp createdAt) {
-        this.createdAt= createdAt;
-    }
-    public Timestamp getupdatedAt() {
-      return updatedAt;
-    }
-    public void setupdatedAt(Timestamp updatedAt) {
-        this.updatedAt= updatedAt;
-    }
-
-    public Zone(Long id, String zoneName, Integer priorityLevel, Integer population, Boolean active, Timestamp createdAt, Timestamp updatedAt){
+    public DemandReading(Long id, String zoneName, Integer priorityLevel, Integer population, Boolean active, Timestamp createdAt, Timestamp updatedAt){
         this.id=id;
         this.zoneName=zoneName;
         this.priorityLevel= priorityLevel;
