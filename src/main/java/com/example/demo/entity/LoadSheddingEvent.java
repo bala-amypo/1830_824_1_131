@@ -13,7 +13,7 @@ public class LoadSheddingEvent {
     private String zone;
     private String reason;
     private Timestamp eventStart;
-    private Timestamp evenEnd;
+    private Timestamp eventEnd;
     private long triggeredByForecastId;
     private Double expectedDemandReductionMW;
     public long getId() {
@@ -32,7 +32,7 @@ public class LoadSheddingEvent {
        return eventstart ;
     }
     public void seteventStart(Timestamp eventStart) {
-        this.eventStart= evenStart;
+        this.eventStart= eventStart;
     }
     public Timestamp geteventEnd() {
         return eventEnd;
@@ -47,7 +47,7 @@ public class LoadSheddingEvent {
         this.reason= reason;
     }
     public Long gettriggeredByForecastId() {
-     return triggeredByForecast;
+     return triggeredByForecastId;
     }
     public void settriggeredByForecastId(Long triggeredByForecastId) {
         this.triggeredByForecastId= triggeredByForecastId;
