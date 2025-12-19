@@ -59,7 +59,15 @@ public class ZoneRestorationRecord {
         return eventId;
     }
 
-    public void seteventId(Timestamp recordedAt) {
-        this.recordedAt = recordedAt;
+    public void seteventId(Long eventId) {
+        this.eventId= eventId;
+    }
+
+    public String getnotes() {
+        return notes;
+    }
+
+    public void setnotes(String notes) {
+        this.notes= notes;
     }
 }
