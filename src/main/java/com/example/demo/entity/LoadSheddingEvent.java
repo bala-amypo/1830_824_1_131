@@ -44,8 +44,15 @@ public class SupplyForecast {
      return reason;
     }
     public void setreason(Timestamp reason) {
-        this.reason= generatedAt;
+        this.reason= reason;
     }
+    public () {
+     return reason;
+    }
+    public void setreason(Timestamp reason) {
+        this.reason= reason;
+    }
+
     
     public SupplyForecast( long id,Double availableSupplyMW,Timestamp forecastStart,Timestamp forecastEnd,Timestamp generatedAt){
         this.id = id;
