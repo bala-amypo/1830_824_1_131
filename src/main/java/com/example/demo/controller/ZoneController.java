@@ -35,7 +35,7 @@ import com.example.demo.service.ZoneService;
 
     @PutMapping("/{id}/deactivate")
     public Zone deactivateZone(@PathVariable Long id){
-        return ZoneService. deactivateZone(Long id);
+        return ZoneService.deactivateZone(Long id);
 
     }
     
