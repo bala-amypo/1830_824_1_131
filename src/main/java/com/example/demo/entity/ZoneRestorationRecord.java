@@ -28,6 +28,7 @@ public class ZoneRestorationRecord {
         this.zone = zone;
         this.eventId = eventId;
         this.restoredAt = restoredAt;
+        this.notes=notes;
     }
 
     public Long getId() {
@@ -46,11 +47,11 @@ public class ZoneRestorationRecord {
         this.zone = zone;
     }
 
-    public Double getDemandMW() {
-        return demandMW;
+    public Timestamp getrestoredAt() {
+        return restoredAt;
     }
 
-    public void setDemandMW(Double demandMW) {
+    public void setrestoredAt(Double demandMW) {
         this.demandMW = demandMW;
     }
 
