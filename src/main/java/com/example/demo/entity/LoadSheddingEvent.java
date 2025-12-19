@@ -60,7 +60,7 @@ public class SupplyForecast {
     }
 
     
-    public SupplyForecast( long id,Double availableSupplyMW,Timestamp forecastStart,Timestamp forecastEnd,Timestamp generatedAt){
+    public SupplyForecast( long id,Double expectedDemandReductionMW ,Timestamp eventStart,Timestamp eventEnd, S){
         this.id = id;
         this.availableSupplyMW = availableSupplyMW;
         this.forecastStart = forecastStart;
