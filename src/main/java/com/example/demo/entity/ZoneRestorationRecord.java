@@ -51,15 +51,15 @@ public class ZoneRestorationRecord {
         return restoredAt;
     }
 
-    public void setrestoredAt(Double demandMW) {
-        this.demandMW = demandMW;
+    public void setrestoredAt(Timestamp restoredAt) {
+        this.restoredAt = restoredAt;
     }
 
-    public Timestamp getrecordedAt() {
-        return recordedAt;
+    public Long geteventId() {
+        return eventId;
     }
 
-    public void setrecordedAt(Timestamp recordedAt) {
+    public void seteventId(Timestamp recordedAt) {
         this.recordedAt = recordedAt;
     }
 }
