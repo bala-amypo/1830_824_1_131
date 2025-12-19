@@ -29,7 +29,13 @@ import com.example.demo.service.ZoneService;
 
     @GetMapping("/{id}")
     public Zone getAllZones() {
-        return lcs.getViewByID(id);
+        return ZoneService.getAllZones();
+    }
+
+    @PutMapping("/{id}/deactivate")
+    public Zone deactivateZone(@PathVariabl Long id,@RequestParam String ,Zone zone){
+        return ZoneService. deactivateZone(Long id);
+
     }
     
 }
