@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
 import java.security.Timestamp;
 @Entity 
-public class Zone {
+public class DemandReading {
     @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
@@ -38,17 +38,14 @@ public class Zone {
     public void setrecordedAt(Timestamp recordedAt) {
         this.recordedAt=recordedAt;
     }
-    public DemandReading(Long id, String zoneName, Integer priorityLevel, Integer population, Boolean active, Timestamp createdAt, Timestamp updatedAt){
+    public DemandReading(Long id, String zone, Double demandMW, Timestamp recordedAt){
         this.id=id;
-        this.zoneName=zoneName;
-        this.priorityLevel= priorityLevel;
-        this.population=population;
-        this.active=active;
-        this.createdAt=createdAt;
-        this.updatedAt=updatedAt;
+        this.zone=zone;
+        this.demandMW= demandMW;
+        this.recordedAt=recordedAt;
     }
 
-    public Zone(){
+    public DemandReading(){
 
     }
 }
