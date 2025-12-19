@@ -1,76 +1,107 @@
 package com.example.demo.entity;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import java.security.Timestamp;
-@Entity 
+
+import java.sql.Timestamp;
+
+@Entity
 public class LoadSheddingEvent {
+
     @Id
-@GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long id;
-   
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String zone;
     private String reason;
+
     private Timestamp eventStart;
     private Timestamp eventEnd;
-    private long triggeredByForecastId;
+
+    private Long triggeredByForecastId;
+
     private Double expectedDemandReductionMW;
-    public long getId() {
-      return id;
-    }
-    public void setId(int id) {
-        this.id= id;
-    }
-    public String getzone() {
-        return zone;
-    }
-    public void setzone(String zone) {
-        this.zone = zone;
-    }
-    public Timestamp geteventStart() {
-       return eventstart ;
-    }
-    public void seteventStart(Timestamp eventStart) {
-        this.eventStart= eventStart;
-    }
-    public Timestamp geteventEnd() {
-        return eventEnd;
-    }
-    public void seteventEnd(Timestamp eventEnd) {
-        this.eventEnd= eventEnd;
-    }
-    public String getreason() {
-     return reason;
-    }
-    public void setreason(Timestamp reason) {
-        this.reason= reason;
-    }
-    public Long gettriggeredByForecastId() {
-     return triggeredByForecastId;
-    }
-    public void settriggeredByForecastId(Long triggeredByForecastId) {
-        this.triggeredByForecastId= triggeredByForecastId;
-    }
-    public Double getexpectedDemandReductionMW() {
-     return expectedDemandReductionMW;
-    }
-    public void setexpectedDemandReductionMW(Double expectedDemandReductionMW) {
-        this.expectedDemandReductionMW= expectedDemandReductionMW;
+
+    // ✅ No-args constructor (required by JPA)
+    public LoadSheddingEvent() {
     }
 
-    
-    public LoadSheddingEvent( long id,Double expectedDemandReductionMW ,Timestamp eventStart,Timestamp eventEnd, String zone, String reason, Long triggeredByForecastId ){
+    // ✅ All-args constructor
+    public LoadSheddingEvent(
+            Long id,
+            Double expectedDemandReductionMW,
+            Timestamp eventStart,
+            Timestamp eventEnd,
+            String zone,
+            String reason,
+            Long triggeredByForecastId
+    ) {
         this.id = id;
-        this.expectedDemandReductionMW= expectedDemandReductionMW;
+        this.expectedDemandReductionMW = expectedDemandReductionMW;
         this.eventStart = eventStart;
         this.eventEnd = eventEnd;
+        this.zone = zone;
         this.reason = reason;
-        this.triggeredByForecastId=triggeredByForecastId;
-        this.zone=zone;
+        this.triggeredByForecastId = triggeredByForecastId;
     }
 
-    public LoadSheddingEvent(){
+    // ✅ Getters & Setters (Java standard naming)
+
+    public Long getId() {
+        return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getZone() {
+        return zone;
+    }
+
+    public void setZone(String zone) {
+        this.zone = zone;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
+    public Timestamp getEventStart() {
+        return eventStart;
+    }
+
+    public void setEventStart(Timestamp eventStart) {
+        this.eventStart = eventStart;
+    }
+
+    public Timestamp getEventEnd() {
+        return eventEnd;
+    }
+
+    public void setEventEnd(Timestamp eventEnd) {
+        this.eventEnd = eventEnd;
+    }
+
+    public Long getTriggeredByForecastId() {
+        return triggeredByForecastId;
+    }
+
+    public void setTriggeredByForecastId(Long triggeredByForecastId) {
+        this.triggeredByForecastId = triggeredByForecastId;
+    }
+
+    public Double getExpectedDemandReductionMW() {
+        return expectedDemandReductionMW;
+    }
+
+    public void setExpectedDemandReductionMW(Double expectedDemandReductionMW) {
+        this.expectedDemandReductionMW = expectedDemandReductionMW;
+    }
 }
