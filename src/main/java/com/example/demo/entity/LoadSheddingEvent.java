@@ -46,11 +46,17 @@ public class SupplyForecast {
     public void setreason(Timestamp reason) {
         this.reason= reason;
     }
-    public Long gettriggeredBy() {
-     return reason;
+    public Long gettriggeredByForecastId() {
+     return triggeredByForecast;
     }
-    public void setreason(Timestamp reason) {
-        this.reason= reason;
+    public void settriggeredByForecastId(Long triggeredByForecastId) {
+        this.triggeredByForecastId= triggeredByForecastId;
+    }
+    public Double getexpectedDemandReductionMW() {
+     return expectedDemandReductionMW;
+    }
+    public void setexpectedDemandReductionMW(Double expectedDemandReductionMW) {
+        this.triggeredByForecastId= triggeredByForecastId;
     }
 
     
