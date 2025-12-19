@@ -1,62 +1,84 @@
-package com.example.demo.entity;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Column;
-import java.sql.Timestamp;
+import jakarta.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
+@Table(
+    name = "app_user",
+    uniqueConstraints = {
+        @UniqueConstraint(columnNames = "email")
+    }
+)
 public class AppUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique=true)
+
+    @Column(nullable = false, unique = true)
     private String email;
+
+    @Column(nullable = false)
     private String password;
-    private Timestamp recordedAt;
 
-    public DemandReading() {
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "app_user_roles",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles = new HashSet<>();
+
+    @Column(nullable = false)
+    private Boolean active = true;
+
+    // Constructors
+    public AppUser() {}
+
+    public AppUser(String email, String password, Boolean active) {
+        this.email = email;
+        this.password = password;
+        this.active = active;
     }
 
-    public DemandReading(Long id, String zone, Double demandMW, Timestamp recordedAt) {
-        this.id = id;
-        this.zone = zone;
-        this.demandMW = demandMW;
-        this.recordedAt = recordedAt;
-    }
-
+    // Getters and Setters
     public Long getId() {
         return id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getZone() {
-        return zone;
+    public String getPassword() {
+        return password;
+    }
+ 
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public void setZone(String zone) {
-        this.zone = zone;
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public Double getDemandMW() {
-        return demandMW;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
-    public void setDemandMW(Double demandMW) {
-        this.demandMW = demandMW;
+    public Boolean getActive() {
+        return active;
     }
 
-    public Timestamp getRecordedAt() {
-        return recordedAt;
-    }
-
-    public void setRecordedAt(Timestamp recordedAt) {
-        this.recordedAt = recordedAt;
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 }
