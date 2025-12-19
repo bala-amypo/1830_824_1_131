@@ -5,7 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import java.security.Timestamp;
 @Entity 
-public class SupplyForecast {
+public class  {
     @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
@@ -65,7 +65,9 @@ public class SupplyForecast {
         this.expectedDemandReductionMW= expectedDemandReductionMW;
         this.eventStart = eventStart;
         this.eventEnd = eventEnd;
-        this.generatedAt = generatedAt;
+        this.reason = reason;
+        this.triggeredByForecastId=triggeredByForecastId;
+        this.zone=zone;
     }
 
     public SupplyForecast(){
