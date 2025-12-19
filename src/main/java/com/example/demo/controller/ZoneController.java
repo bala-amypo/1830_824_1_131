@@ -16,8 +16,8 @@ import com.example.demo.service.ZoneService;
         return ZoneService.createZone(Zone zone);
      }
     @PutMapping("/{id}")
-    public Zone update(@PathVariable Long caseId,@RequestParam String status){
-        return conflictCaseService.updateCaseStatus(caseId,status);
+    public Zone updateZone(@PathVariabl Long id,@RequestParam String ,Zone zone){
+        return ZoneService.updateZone(Long id,Zone zone);
 
     }
     
