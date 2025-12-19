@@ -16,7 +16,7 @@ public class DemandReading {
 
     private String zone;
     private Double demandMW;
-    private Timestamp recordedAt;
+    private Timestamp eventStart;
 
     public DemandReading() {
     }
