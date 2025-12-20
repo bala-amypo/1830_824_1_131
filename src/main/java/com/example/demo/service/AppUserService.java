@@ -1,42 +1,31 @@
 package com.example.demo.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entity.AppUser;
-import com.example.demo.repository.AppUserRepository;
+import com.example.demo.entity.DemandReading;
 
 @Service
-public class AppUserService {
+public class DemandReadingService {
 
-    @Autowired
-    private AppUserRepository appUserRepository;
-
-    // Register
-    public AppUser register(String email, String password, String role) {
-
-        if (appUserRepository.findByEmail(email).isPresent()) {
-            throw new RuntimeException("User already exists");
-        }
-
-        AppUser user = new AppUser();
-        user.setEmail(email);
-        user.setPassword(password); // plain password
-        user.setRole(role);
-
-        return appUserRepository.save(user);
+    public DemandReading createReading(DemandReading reading) {
+        // TODO: save reading to DB
+        return reading;
     }
 
-    // Login
-    public AppUser login(String email, String password) {
+    public List<DemandReading> getReadingsForZone(Long zoneId) {
+        // TODO: fetch readings for zone
+        return List.of();
+    }
 
-        AppUser user = appUserRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("Invalid email or password"));
+    public DemandReading getLatestReading(Long zoneId) {
+        // TODO: fetch latest reading
+        return new DemandReading();
+    }
 
-        if (!user.getPassword().equals(password)) {
-            throw new RuntimeException("Invalid email or password");
-        }
-
-        return user;
+    public List<DemandReading> getRecentReadings(Long zoneId, int limit) {
+        // TODO: fetch recent readings with limit
+        return List.of();
     }
 }
