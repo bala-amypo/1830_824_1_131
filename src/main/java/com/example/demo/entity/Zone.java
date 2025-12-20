@@ -84,8 +84,6 @@ public class Zone {
     // ---------- Constructors ----------
 
     public Zone() {
-        // default active = true
-        this.active = true;
     }
 
     public Zone(Long id, String zoneName, Integer priorityLevel, Integer population,
