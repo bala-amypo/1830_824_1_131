@@ -11,3 +11,4 @@ public class HelloController {
         return "Spring Boot is running successfully!";
     }
 }
+rm -rf src/main/java/com/example/demo/{config,service,entity,repository}
