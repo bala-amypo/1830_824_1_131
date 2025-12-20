@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 import java.time.LocalDateTime;
 
 @Entity
-public class Zone {
+public class ZoneRestorationRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,10 +24,10 @@ public class Zone {
 
     
 
-    public Zone() {
+    public ZoneRestorationRecord() {
     }
 
-    public Zone(Long id, String zone,TimeStamp restoredAt , Long eventId,String notes) {
+    public ZoneRestorationRecord(Long id, String zone,TimeStamp restoredAt , Long eventId,String notes) {
         this.id = id;
         this.zone = zone;
         this.restoredAt = restoredAt;
@@ -66,31 +66,16 @@ public class Zone {
         return eventId;
     }
 
-    public void seteventIdlleventId) {
-        this.population = population;
+    public void seteventId(Long eventId) {
+        this.eventId = eventId;
     }
 
-    public Boolean getactive() {
-        return active;
+    public String getnotes() {
+        return  notes;
     }
 
-    public void setactive(Boolean active) {
-        this.active = active;
+    public void setnotes(String  notes) {
+        this. notes =  notes;
     }
 
-    public LocalDateTime getcreatedAt() {
-        return createdAt;
-    }
-
-    public void setcreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getupdatedAt() {
-        return updatedAt;
-    }
-
-    public void setupdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
 }
