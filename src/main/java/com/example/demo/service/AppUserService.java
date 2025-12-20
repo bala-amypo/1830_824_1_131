@@ -1,31 +1,47 @@
 package com.example.demo.service;
 
-import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entity.DemandReading;
+import com.example.demo.entity.AppUser;
+import com.example.demo.repository.AppUserRepository;
 
 @Service
-public class DemandReadingService {
+public class AppUserService {
 
-    public DemandReading createReading(DemandReading reading) {
-        // TODO: save reading to DB
-        return reading;
+    @Autowired
+    private AppUserRepository appUserRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    // Register a new user
+    public AppUser register(String email, String password, String role) {
+
+        // check if user already exists
+        if (appUserRepository.findByEmail(email).isPresent()) {
+            throw new RuntimeException("User already exists with this email");
+        }
+
+        AppUser user = new AppUser();
+        user.setEmail(email);
+        user.setPassword(passwordEncoder.encode(password));
+        user.setRole(role);
+
+        return appUserRepository.save(user);
     }
 
-    public List<DemandReading> getReadingsForZone(Long zoneId) {
-        // TODO: fetch readings for zone
-        return List.of();
-    }
+    // Login user
+    public AppUser login(String email, String password) {
 
-    public DemandReading getLatestReading(Long zoneId) {
-        // TODO: fetch latest reading
-        return new DemandReading();
-    }
+        AppUser user = appUserRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Invalid email or password"));
 
-    public List<DemandReading> getRecentReadings(Long zoneId, int limit) {
-        // TODO: fetch recent readings with limit
-        return List.of();
+        if (!passwordEncoder.matches(password, user.getPassword())) {
+            throw new RuntimeException("Invalid email or password");
+        }
+
+        return user;
     }
 }
