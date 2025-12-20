@@ -9,22 +9,22 @@ import com.example.demo.entity.LoadSheddingEvent;
 @Service
 public class LoadSheddingService {
 
-    public demandReading createReading(DemandReading reading) {
+    public DemandReading createReading(DemandReading reading) {
         
         return new DemandReading();
     }
 
-    public LoadSheddingEvent getEventById(Long id) {
+    public DemandReading getReadingsForZone(Long zoneId) {
         
-        return new LoadSheddingEvent();
+        return new DemandReading();
     }
 
-    public List<LoadSheddingEvent> getEventsForZone(Long zoneId) {
+    public DemandReading getLatestReading(Long zoneId) {
       
-        return List.of();
+        return new DemandReading();
     }
 
-    public List<LoadSheddingEvent> getAllEvents() {
+    public  getAllEvents() {
         return List.of();
     }
 }
