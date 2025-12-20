@@ -18,26 +18,22 @@ public class Zone {
     @Column(unique = true, nullable = false)
     private String zone;
 
-    private Integer priorityLevel;
-    private Integer population;
-    private Boolean active;
+    private TimeStamp restoredAt;
+    private Long eventId;
+    private String notes;
 
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
-
-    // -------- Constructors --------
+    
 
     public Zone() {
     }
 
-    public Zone(Long id, String zoneName, Integer priorityLevel, Integer population,
-                Boolean active, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Zone(Long id, String zone,TimeStamp restoredAt , Long eventId,String notes) {
         this.id = id;
-        this.zoneName = zoneName;
-        this.priorityLevel = priorityLevel;
+        this.zone = zone;
+        this.restoredAt = restoredAt;
         this.population = population;
-        this.active = active;
-        this.createdAt = createdAt;
+        this.eventId = eventId;
+        this.notes = createdAt;
         this.updatedAt = updatedAt;
     }
 
