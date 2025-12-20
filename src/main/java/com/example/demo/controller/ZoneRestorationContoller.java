@@ -10,7 +10,7 @@ import com.example.demo.service.ZoneService;
 
 @RestController
 @RequestMapping("/zones")
-public class ZoneController {
+public class ZoneRestorationContoller {
 
     @Autowired
     private ZoneService zoneService;

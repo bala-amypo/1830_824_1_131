@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.entity.DemandReading;
 
 @Service
-public class DemandReadingService {
+public class AppUserService {
 
     public DemandReading createReading(DemandReading reading) {
         
