@@ -33,8 +33,8 @@ public class Zone {
         this.restoredAt = restoredAt;
         this.population = population;
         this.eventId = eventId;
-        this.notes = createdAt;
-        this.updatedAt = updatedAt;
+        this.notes = notes;
+        
     }
 
 
@@ -46,27 +46,27 @@ public class Zone {
         this.id = id;
     }
 
-    public String getzoneName() {
-        return zoneName;
+    public String getzone() {
+        return zone;
     }
 
-    public void setzoneName(String zoneName) {
-        this.zoneName = zoneName;
+    public void setzone(String zone) {
+        this.zone = zone;
     }
 
-    public Integer getpriorityLevel() {
-        return priorityLevel;
+    public TimeStamp getrestoredAt() {
+        return restoredAt;
     }
 
-    public void setpriorityLevel(Integer priorityLevel) {
-        this.priorityLevel = priorityLevel;
+    public void setrestoredAt(TimeStamp restoredAt) {
+        this.restoredAt = restoredAt;
     }
 
-    public Integer getpopulation() {
-        return population;
+    public Long geteventId() {
+        return eventId;
     }
 
-    public void sepopulation(Integer population) {
+    public void seteventIdlleventId) {
         this.population = population;
     }
 
