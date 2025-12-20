@@ -1,30 +1,30 @@
-package com.example.demo.entity;
+// package com.example.demo.entity;
 
-import jakarta.persistence.*;
+// import jakarta.persistence.*;
 
-import java.util.Set;
+// import java.util.Set;
 
-@Entity
-@Table(
-    name = "app_users",
-    uniqueConstraints = @UniqueConstraint(columnNames = "email")
-)
-public class AppUser {
+// @Entity
+// @Table(
+//     name = "app_users",
+//     uniqueConstraints = @UniqueConstraint(columnNames = "email")
+// )
+// public class AppUser {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     private Long id;
 
-    @Column(nullable = false, unique = true)
-    private String email;
+//     @Column(nullable = false, unique = true)
+//     private String email;
 
-    private String password;
+//     private String password;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "user_roles")
-    private Set<String> roles;
+//     @ElementCollection(fetch = FetchType.EAGER)
+//     @CollectionTable(name = "user_roles")
+//     private Set<String> roles;
 
-    private Boolean active = true;
+//     private Boolean active = true;
 
-    // getters & setters
-}
+//     // getters & setters
+// }

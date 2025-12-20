@@ -1,49 +1,29 @@
-package com.example.demo.entity;
+package com.example.demo.model;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Min;
-
-import java.time.Instant;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(
-        name = "zones",
-        uniqueConstraints = @UniqueConstraint(columnNames = "zone_name")
-)
 public class Zone {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "zone_name", nullable = false, unique = true)
+    @Column(unique = true)
     private String zoneName;
 
-    @Min(1)
     private Integer priorityLevel;
-
     private Integer population;
+    private Boolean active;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
-    private Boolean active = true;
-
-    private Instant createdAt;
-    private Instant updatedAt;
-
-    @PrePersist
-    public void onCreate() {
-        createdAt = Instant.now();
-        updatedAt = createdAt;
-        if (active == null) {
-            active = true;
-        }
-    }
-
-    @PreUpdate
-    public void onUpdate() {
-        updatedAt = Instant.now();
-    }
-
-    // ===== GETTERS & SETTERS =====
+    // ---------- Getters and Setters ----------
 
     public Long getId() {
         return id;
@@ -85,11 +65,37 @@ public class Zone {
         this.active = active;
     }
 
-    public Instant getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public Instant getUpdatedAt() {
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
         return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    // ---------- Constructors ----------
+
+    public Zone() {
+        // default active = true
+        this.active = true;
+    }
+
+    public Zone(Long id, String zoneName, Integer priorityLevel, Integer population,
+                Boolean active, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.id = id;
+        this.zoneName = zoneName;
+        this.priorityLevel = priorityLevel;
+        this.population = population;
+        this.active = active;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 }
