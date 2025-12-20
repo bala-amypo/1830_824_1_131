@@ -41,7 +41,6 @@ public class Zone {
         this.updatedAt = updatedAt;
     }
 
-    // -------- Getters & Setters --------
 
     public Long getId() {
         return id;
@@ -51,51 +50,51 @@ public class Zone {
         this.id = id;
     }
 
-    public String getZoneName() {
+    public String getzoneName() {
         return zoneName;
     }
 
-    public void setZoneName(String zoneName) {
+    public void setzoneName(String zoneName) {
         this.zoneName = zoneName;
     }
 
-    public Integer getPriorityLevel() {
+    public Integer getpriorityLevel() {
         return priorityLevel;
     }
 
-    public void setPriorityLevel(Integer priorityLevel) {
+    public void setpriorityLevel(Integer priorityLevel) {
         this.priorityLevel = priorityLevel;
     }
 
-    public Integer getPopulation() {
+    public Integer getpopulation() {
         return population;
     }
 
-    public void setPopulation(Integer population) {
+    public void sepopulation(Integer population) {
         this.population = population;
     }
 
-    public Boolean getActive() {
+    public Boolean getactive() {
         return active;
     }
 
-    public void setActive(Boolean active) {
+    public void setactive(Boolean active) {
         this.active = active;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public LocalDateTime getcreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setcreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
-    public LocalDateTime getUpdatedAt() {
+    public LocalDateTime getupdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
+    public void setupdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 }
