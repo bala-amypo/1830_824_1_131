@@ -9,28 +9,19 @@ import com.example.demo.entity.ZoneRestorationRecord;
 @Service
 public class ZoneRestorationService {
 
-    public Zone createZone(Zone zone) {
-        // TODO: save zone to DB
-        return zone;
+    public ZoneRestorationRecord restoreZone(ZoneRestorationRecord record) {
+        // TODO: restore the zone and save restoration record to DB
+        // e.g. activate zone, set restoredAt timestamp, persist record
+        return record;
     }
 
-    public Zone updateZone(Long id, Zone zone) {
-        // TODO: update zone
-        return zone;
+    public ZoneRestorationRecord getRecordById(Long id) {
+        // TODO: fetch restoration record by id
+        return new ZoneRestorationRecord();
     }
 
-    public Zone getZoneById(Long id) {
-        // TODO: fetch zone by id
-        return new Zone();
-    }
-
-    public List<Zone> getAllZones() {
-        // TODO: fetch all zones
+    public List<ZoneRestorationRecord> getRecordsForZone(Long zoneId) {
+        // TODO: fetch all restoration records for a given zone
         return List.of();
-    }
-
-    public Zone deactivateZone(Long id) {
-        // TODO: deactivate zone
-        return new Zone();
     }
 }
