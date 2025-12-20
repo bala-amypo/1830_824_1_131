@@ -25,7 +25,7 @@ public class DemandReadingService {
     }
 
     public List<DemandReading> getRecentReadings(Long zoneId, int limit) {
-        // TODO: fetch recent readings with limit
+        
         return List.of();
     }
 }
