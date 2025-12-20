@@ -18,25 +18,24 @@ public class ZoneRestorationRecord {
     @Column(unique = true, nullable = false)
     private String zone;
 
-    private TimeStamp restoredAt;
+    private Timestamp restoredAt;
     private Long eventId;
     private String notes;
 
-    
-
+    // No-arg constructor (required by JPA)
     public ZoneRestorationRecord() {
     }
 
-    public ZoneRestorationRecord(Long id, String zone,TimeStamp restoredAt , Long eventId,String notes) {
+    // Parameterized constructor
+    public ZoneRestorationRecord(Long id, String zone, Timestamp restoredAt, Long eventId, String notes) {
         this.id = id;
         this.zone = zone;
         this.restoredAt = restoredAt;
-        this.population = population;
         this.eventId = eventId;
         this.notes = notes;
-        
     }
 
+    // Getters and Setters
 
     public Long getId() {
         return id;
@@ -46,36 +45,35 @@ public class ZoneRestorationRecord {
         this.id = id;
     }
 
-    public String getzone() {
+    public String getZone() {
         return zone;
     }
 
-    public void setzone(String zone) {
+    public void setZone(String zone) {
         this.zone = zone;
     }
 
-    public TimeStamp getrestoredAt() {
+    public Timestamp getRestoredAt() {
         return restoredAt;
     }
 
-    public void setrestoredAt(TimeStamp restoredAt) {
+    public void setRestoredAt(Timestamp restoredAt) {
         this.restoredAt = restoredAt;
     }
 
-    public Long geteventId() {
+    public Long getEventId() {
         return eventId;
     }
 
-    public void seteventId(Long eventId) {
+    public void setEventId(Long eventId) {
         this.eventId = eventId;
     }
 
-    public String getnotes() {
-        return  notes;
+    public String getNotes() {
+        return notes;
     }
 
-    public void setnotes(String  notes) {
-        this. notes =  notes;
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
-
 }
