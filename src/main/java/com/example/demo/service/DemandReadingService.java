@@ -24,7 +24,7 @@ public class LoadSheddingService {
         return new DemandReading();
     }
 
-    public  getAllEvents() {
-        return List.of();
+    public DemandReading getRecentReadings(Long zoneId , int limit) {
+        return new DemandReading();
     }
 }
