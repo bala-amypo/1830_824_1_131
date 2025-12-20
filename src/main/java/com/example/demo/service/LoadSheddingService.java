@@ -7,7 +7,7 @@ import com.example.demo.entity.LoadSheddingEvent;
 
 @Service
 public class LoadSheddingService{
-    triggerLoadShedding(Long forecast)
+    triggerLoadShedding(Long forecastId)
     getEventById(Long id)
     getEventsForZone(Long zoneId)
     getAllEvents()
