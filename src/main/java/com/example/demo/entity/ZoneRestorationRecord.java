@@ -1,25 +1,25 @@
-package com.example.demo.entity;
+// package com.example.demo.entity;
 
-import jakarta.persistence.*;
+// import jakarta.persistence.*;
 
-import java.time.Instant;
+// import java.time.Instant;
 
-@Entity
-@Table(name = "zone_restorations")
-public class ZoneRestorationRecord {
+// @Entity
+// @Table(name = "zone_restorations")
+// public class ZoneRestorationRecord {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     private Long id;
 
-    @ManyToOne(optional = false)
-    private Zone zone;
+//     @ManyToOne(optional = false)
+//     private Zone zone;
 
-    private Instant restoredAt;
+//     private Instant restoredAt;
 
-    private Long eventId;
+//     private Long eventId;
 
-    private String notes;
+//     private String notes;
 
-    // getters & setters
-}
+//     // getters & setters
+// }
