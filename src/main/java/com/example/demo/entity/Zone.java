@@ -7,8 +7,8 @@ import java.time.Instant;
 
 @Entity
 @Table(
-    name = "zones",
-    uniqueConstraints = @UniqueConstraint(columnNames = "zone_name")
+        name = "zones",
+        uniqueConstraints = @UniqueConstraint(columnNames = "zone_name")
 )
 public class Zone {
 
@@ -33,9 +33,63 @@ public class Zone {
     public void onCreate() {
         createdAt = Instant.now();
         updatedAt = createdAt;
-        if (active == null) active = true;
+        if (active == null) {
+            active = true;
+        }
     }
 
     @PreUpdate
     public void onUpdate() {
-        updatedAt = I
+        updatedAt = Instant.now();
+    }
+
+    // ===== GETTERS & SETTERS =====
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getZoneName() {
+        return zoneName;
+    }
+
+    public void setZoneName(String zoneName) {
+        this.zoneName = zoneName;
+    }
+
+    public Integer getPriorityLevel() {
+        return priorityLevel;
+    }
+
+    public void setPriorityLevel(Integer priorityLevel) {
+        this.priorityLevel = priorityLevel;
+    }
+
+    public Integer getPopulation() {
+        return population;
+    }
+
+    public void setPopulation(Integer population) {
+        this.population = population;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public Instant getUpdatedAt() {
+        return updatedAt;
+    }
+}
