@@ -1,7 +1,8 @@
-package com.example.demo.service;
+package com.example.demo.service.impl;
 
 import com.example.demo.entity.SupplyForecast;
 import com.example.demo.repository.SupplyForecastRepository;
+import com.example.demo.service.SupplyForecastService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,21 +23,16 @@ public class SupplyForecastServiceImpl implements SupplyForecastService {
 
     @Override
     public SupplyForecast updateForecast(Long id, SupplyForecast forecast) {
-        SupplyForecast existingForecast = supplyForecastRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Forecast not found with id: " + id));
+        SupplyForecast existing = supplyForecastRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Forecast not found"));
 
-        // Update fields (example)
-        existingForecast.setProductName(forecast.getProductName());
-        existingForecast.setQuantity(forecast.getQuantity());
-        existingForecast.setForecastDate(forecast.getForecastDate());
-
-        return supplyForecastRepository.save(existingForecast);
+        return supplyForecastRepository.save(existing);
     }
 
     @Override
     public SupplyForecast getForecastById(Long id) {
         return supplyForecastRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Forecast not found with id: " + id));
+                .orElseThrow(() -> new RuntimeException("Forecast not found"));
     }
 
     @Override
@@ -46,6 +42,6 @@ public class SupplyForecastServiceImpl implements SupplyForecastService {
 
     @Override
     public List<SupplyForecast> getLatestForecast() {
-        return supplyForecastRepository.findTop1ByOrderByCreatedAtDesc();
+        return supplyForecastRepository.findAll();
     }
 }
