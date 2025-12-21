@@ -3,13 +3,13 @@ package com.example.demo.service;
 import com.example.demo.entity.SupplyForecast;
 import java.util.List;
 
-public interface  {
+public interface SupplyForecastService {
 
-    Zone createZone(Zone zone);
+    SupplyForecast createForecast(SupplyForecast forecast);
 
-    Zone updateZone(Long id, Zone zone);
+    SupplyForecast updateForecast(Lond id,SupplyForecast forecast);
 
-    Zone getZoneById(Long id);
+    SupplyForecast ;
 
     List<Zone> getAllZones();
 
