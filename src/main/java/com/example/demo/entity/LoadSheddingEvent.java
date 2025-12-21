@@ -26,5 +26,5 @@ public class LoadSheddingEvent {
     @Min(0)
     private Double expectedDemandReductionMW;
 
-    // getters & setters
+    
 }
