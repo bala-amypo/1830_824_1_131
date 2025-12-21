@@ -10,38 +10,38 @@ import java.util.List;
 @Service
 public class SupplyForecastServiceImpl implements SupplyForecastService {
 
-    private final SupplyForecastRepository supplyForecastRepository;
+    private final SupplyForecastRepository SupplyForecastRepository;
 
-    public SupplyForecastServiceImpl(SupplyForecastRepository supplyForecastRepository) {
-        this.supplyForecastRepository = supplyForecastRepository;
+    public SupplyForecastServiceImpl(SupplyForecastRepository SupplyForecastRepository) {
+        this.SupplyForecastRepository = SupplyForecastRepository;
     }
 
     @Override
     public SupplyForecast createForecast(SupplyForecast forecast) {
-        return supplyForecastRepository.save(forecast);
+        return SupplyForecastRepository.save(forecast);
     }
 
     @Override
     public SupplyForecast updateForecast(Long id, SupplyForecast forecast) {
-        SupplyForecast existing = supplyForecastRepository.findById(id)
+        SupplyForecast existing = SupplyForecastRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Forecast not found"));
 
-        return supplyForecastRepository.save(existing);
+        return SupplyForecastRepository.save(existing);
     }
 
     @Override
     public SupplyForecast getForecastById(Long id) {
-        return supplyForecastRepository.findById(id)
+        return SupplyForecastRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Forecast not found"));
     }
 
     @Override
     public List<SupplyForecast> getAllForecasts() {
-        return supplyForecastRepository.findAll();
+        return SupplyForecastRepository.findAll();
     }
 
     @Override
     public List<SupplyForecast> getLatestForecast() {
-        return supplyForecastRepository.findAll();
+        return SupplyForecastRepository.findAll();
     }
 }
