@@ -9,9 +9,9 @@ public interface SupplyForecastService {
 
     SupplyForecast updateForecast(Lond id,SupplyForecast forecast);
 
-    SupplyForecast ;
+    SupplyForecast getForecastById(Long id);
 
-    List<Zone> getAllZones();
+    List<SupplyForecast> getAllForecasts();
 
-    void deactivateZone(Long id);
+    List<SupplyForecast> getLatestForecast();
 }
