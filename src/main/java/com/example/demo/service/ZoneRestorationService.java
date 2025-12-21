@@ -9,9 +9,5 @@ public interface ZoneRestorationRecordService {
 
     ZoneRestorationRecord getRecordById(Long id);
 
-    ZoneRestorationRecord getForecastById(Long id);
-
-    List<SupplyForecast> getAllForecasts();
-
-    List<SupplyForecast> getLatestForecast();
+    ZoneRestorationRecord getRecordsForZone(Long zoneId);
 }
