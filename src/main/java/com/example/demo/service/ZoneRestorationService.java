@@ -7,9 +7,9 @@ public interface ZoneRestorationRecordService {
 
     ZoneRestorationRecord restoreZone(ZoneRestorationRecord record);
 
-    SupplyForecast updateForecast(Long id, SupplyForecast forecast);
+    ZoneRestorationRecord getRecordById(Long id);
 
-    SupplyForecast getForecastById(Long id);
+    ZoneRestorationRecord getForecastById(Long id);
 
     List<SupplyForecast> getAllForecasts();
 
