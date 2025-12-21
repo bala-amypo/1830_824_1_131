@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface ZoneRestorationRecordService {
 
-    ZoneRestorationRecord createForecast(SupplyForecast forecast);
+    ZoneRestorationRecord restoreZone(ZoneRestorationRecord record);
 
     SupplyForecast updateForecast(Long id, SupplyForecast forecast);
 
