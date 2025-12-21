@@ -6,18 +6,20 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
+
 public class ZoneRestorationRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public ZoneRestorationRecord() {
-        // default constructor required by JPA
-    }
+    private Long zoneId;   // ✅ MUST EXIST
 
-    public ZoneRestorationRecord(Long id) {
+    public ZoneRestorationRecord() {}
+
+    public ZoneRestorationRecord(Long id, Long zoneId) {
         this.id = id;
+        this.zoneId = zoneId;
     }
 
     public Long getId() {
@@ -26,5 +28,13 @@ public class ZoneRestorationRecord {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getZoneId() {
+        return zoneId;
+    }
+
+    public void setZoneId(Long zoneId) {
+        this.zoneId = zoneId;
     }
 }

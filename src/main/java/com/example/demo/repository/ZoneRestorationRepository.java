@@ -2,9 +2,11 @@ package com.example.demo.repository;
 
 import com.example.demo.entity.ZoneRestorationRecord;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface ZoneRestorationRepository extends JpaRepository<ZoneRestorationRecord, Long> {
+@Repository
+public interface ZoneRestorationRepository
+        extends JpaRepository<ZoneRestorationRecord, Long> {
+
+    ZoneRestorationRecord findByZoneId(Long zoneId);
 }
-
-
-
