@@ -1,100 +1,100 @@
-package com.example.demo.entity;
+// package com.example.demo.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import java.sql.Timestamp;
-
-
-@Entity
-public class LoadSheddingEvent {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(unique = true, nullable = false)
-    private String zone;
-
-    private Timestamp eventStart ;
-    private Timestamp eventEnd;
-    private String reason;
-
-    private Long triggeredForecastId;
-    private Double expectedDemandReductionMW;
-
-    // -------- Constructors --------
-
-    public LoadSheddingEvent() {
-    }
-
-    public LoadSheddingEvent(Long id, String zone, Timestamp eventStart, Timestamp eventEnd,
-                String reason, Long triggeredForecastId, Double expectedDemandReductionMW) {
-        this.id = id;
-        this.zone = zone;
-        this.eventStart = eventStart;
-        this.eventEnd = eventEnd;
-        this.reason = reason;
-        this.triggeredForecastId = triggeredForecastId;
-        this.expectedDemandReductionMW = expectedDemandReductionMW;
-    }
+// import jakarta.persistence.Column;
+// import jakarta.persistence.Entity;
+// import jakarta.persistence.GeneratedValue;
+// import jakarta.persistence.GenerationType;
+// import jakarta.persistence.Id;
+// import java.sql.Timestamp;
 
 
-    public Long getId() {
-        return id;
-    }
+// @Entity
+// public class LoadSheddingEvent {
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     private Long id;
 
-    public String getzone() {
-        return zone;
-    }
+//     @Column(unique = true, nullable = false)
+//     private String zone;
 
-    public void setzone(String zone) {
-        this.zone = zone;
-    }
+//     private Timestamp eventStart ;
+//     private Timestamp eventEnd;
+//     private String reason;
 
-    public Timestamp geteventStart() {
-        return eventStart;
-    }
+//     private Long triggeredForecastId;
+//     private Double expectedDemandReductionMW;
 
-    public void seteventStart( Timestamp eventStart) {
-        this.eventStart = eventStart;
-    }
+//     // -------- Constructors --------
 
-    public Timestamp geteventEnd() {
-        return eventEnd;
-    }
+//     public LoadSheddingEvent() {
+//     }
 
-    public void seteventEnd(Timestamp eventEnd) {
-        this.eventEnd = eventEnd;
-    }
+//     public LoadSheddingEvent(Long id, String zone, Timestamp eventStart, Timestamp eventEnd,
+//                 String reason, Long triggeredForecastId, Double expectedDemandReductionMW) {
+//         this.id = id;
+//         this.zone = zone;
+//         this.eventStart = eventStart;
+//         this.eventEnd = eventEnd;
+//         this.reason = reason;
+//         this.triggeredForecastId = triggeredForecastId;
+//         this.expectedDemandReductionMW = expectedDemandReductionMW;
+//     }
 
-    public String getreason() {
-        return reason;
-    }
 
-    public void setreason(String reason) {
-        this.reason = reason;
-    }
+//     public Long getId() {
+//         return id;
+//     }
 
-    public Long gettriggeredForecastId () {
-        return triggeredForecastId;
-    }
+//     public void setId(Long id) {
+//         this.id = id;
+//     }
 
-    public void settriggeredForecastId (Long triggeredForecastId ) {
-        this.triggeredForecastId = triggeredForecastId ;
-    }
+//     public String getzone() {
+//         return zone;
+//     }
 
-    public Double getexpectedDemandReductionMW() {
-        return expectedDemandReductionMW;
-    }
+//     public void setzone(String zone) {
+//         this.zone = zone;
+//     }
 
-    public void setexpectedDemandReductionMW(Double expectedDemandReductionMW) {
-        this.expectedDemandReductionMW = expectedDemandReductionMW;
-    }
-}
+//     public Timestamp geteventStart() {
+//         return eventStart;
+//     }
+
+//     public void seteventStart( Timestamp eventStart) {
+//         this.eventStart = eventStart;
+//     }
+
+//     public Timestamp geteventEnd() {
+//         return eventEnd;
+//     }
+
+//     public void seteventEnd(Timestamp eventEnd) {
+//         this.eventEnd = eventEnd;
+//     }
+
+//     public String getreason() {
+//         return reason;
+//     }
+
+//     public void setreason(String reason) {
+//         this.reason = reason;
+//     }
+
+//     public Long gettriggeredForecastId () {
+//         return triggeredForecastId;
+//     }
+
+//     public void settriggeredForecastId (Long triggeredForecastId ) {
+//         this.triggeredForecastId = triggeredForecastId ;
+//     }
+
+//     public Double getexpectedDemandReductionMW() {
+//         return expectedDemandReductionMW;
+//     }
+
+//     public void setexpectedDemandReductionMW(Double expectedDemandReductionMW) {
+//         this.expectedDemandReductionMW = expectedDemandReductionMW;
+//     }
+// 
