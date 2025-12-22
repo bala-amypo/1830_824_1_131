@@ -36,9 +36,9 @@ public class LoadSheddingEvent {
         this.zone = zone;
         this.eventStart = eventStart;
         this.eventEnd = eventEnd;
-        this.active = active;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+        this.reason = reason;
+        this.triggeredForecastId = triggeredForecastId;
+        this.expectedDemandReductionMW = expectedDemandReductionMW;
     }
 
 
@@ -50,27 +50,27 @@ public class LoadSheddingEvent {
         this.id = id;
     }
 
-    public String getzoneName() {
-        return zoneName;
+    public String getzone() {
+        return zone;
     }
 
-    public void setzoneName(String zoneName) {
-        this.zoneName = zoneName;
+    public void setzone(String zone) {
+        this.zone = zone;
     }
 
-    public Integer getpriorityLevel() {
-        return priorityLevel;
+    public Timestamp geteventStart() {
+        return eventStart;
     }
 
-    public void setpriorityLevel(Integer priorityLevel) {
-        this.priorityLevel = priorityLevel;
+    public void seteventStart( Timestamp eventStart) {
+        this.eventStart = eventStart;
     }
 
-    public Integer getpopulation() {
+    public Integer geteventEnd() {
         return population;
     }
 
-    public void sepopulation(Integer population) {
+    public void seteventEnd(Integer population) {
         this.population = population;
     }
 
