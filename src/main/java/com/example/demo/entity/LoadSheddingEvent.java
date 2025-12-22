@@ -97,4 +97,4 @@
 //     public void setexpectedDemandReductionMW(Double expectedDemandReductionMW) {
 //         this.expectedDemandReductionMW = expectedDemandReductionMW;
 //     }
-// 
+
