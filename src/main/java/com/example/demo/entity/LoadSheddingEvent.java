@@ -5,9 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Timestamp;
+import java.sql.Timestamp;
 
-import java.time.LocalDateTime;
 
 @Entity
 public class LoadSheddingEvent {
