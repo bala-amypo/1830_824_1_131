@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Timestamp;
 
 import java.time.LocalDateTime;
 
@@ -90,11 +91,11 @@ public class LoadSheddingEvent {
         this.triggeredForecastId = triggeredForecastId ;
     }
 
-    public LocalDateTime getexpectedDemandReductionMW() {
-        return updatedAt;
+    public Double getexpectedDemandReductionMW() {
+        return expectedDemandReductionMW;
     }
 
-    public void setexpectedDemandReductionMW(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setexpectedDemandReductionMW(Double expectedDemandReductionMW) {
+        this.expectedDemandReductionMW = expectedDemandReductionMW;
     }
 }
