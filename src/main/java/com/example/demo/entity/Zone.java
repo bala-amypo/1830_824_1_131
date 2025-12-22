@@ -1,11 +1,6 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -25,10 +20,7 @@ public class Zone {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    // -------- Constructors --------
-
-    public Zone() {
-    }
+    public Zone() {}
 
     public Zone(Long id, String zoneName, Integer priorityLevel, Integer population,
                 Boolean active, LocalDateTime createdAt, LocalDateTime updatedAt) {
@@ -41,60 +33,52 @@ public class Zone {
         this.updatedAt = updatedAt;
     }
 
-
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getzoneName() {
+    public String getZoneName() {
         return zoneName;
     }
-
-    public void setzoneName(String zoneName) {
+    public void setZoneName(String zoneName) {
         this.zoneName = zoneName;
     }
 
-    public Integer getpriorityLevel() {
+    public Integer getPriorityLevel() {
         return priorityLevel;
     }
-
-    public void setpriorityLevel(Integer priorityLevel) {
+    public void setPriorityLevel(Integer priorityLevel) {
         this.priorityLevel = priorityLevel;
     }
 
-    public Integer getpopulation() {
+    public Integer getPopulation() {
         return population;
     }
-
-    public void sepopulation(Integer population) {
+    public void setPopulation(Integer population) {
         this.population = population;
     }
 
-    public Boolean getactive() {
+    public Boolean getActive() {
         return active;
     }
-
-    public void setactive(Boolean active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 
-    public LocalDateTime getcreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
-
-    public void setcreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
-    public LocalDateTime getupdatedAt() {
+    public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
-
-    public void setupdatedAt(LocalDateTime updatedAt) {
+    public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 }
