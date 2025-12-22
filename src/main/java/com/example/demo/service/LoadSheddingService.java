@@ -1,15 +1,15 @@
-package com.example.demo.service;
+// package com.example.demo.service;
 
-import com.example.demo.model.LoadSheddingEvent;
-import java.util.List;
+// import com.example.demo.model.LoadSheddingEvent;
+// import java.util.List;
 
-public interface LoadSheddingService {
+// public interface LoadSheddingService {
 
-    LoadSheddingEvent triggerLoadShedding(Long forecastId);
+//     LoadSheddingEvent triggerLoadShedding(Long forecastId);
 
-    LoadSheddingEvent getEventById(Long id);
+//     LoadSheddingEvent getEventById(Long id);
 
-    List<LoadSheddingEvent> getEventsForZone(Long zoneId);
+//     List<LoadSheddingEvent> getEventsForZone(Long zoneId);
 
-    List<LoadSheddingEvent> getAllEvents();
-}
+//     List<LoadSheddingEvent> getAllEvents();
+// }
