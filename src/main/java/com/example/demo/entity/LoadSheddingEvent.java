@@ -66,35 +66,35 @@ public class LoadSheddingEvent {
         this.eventStart = eventStart;
     }
 
-    public Integer geteventEnd() {
-        return population;
+    public Timestamp geteventEnd() {
+        return eventEnd;
     }
 
-    public void seteventEnd(Integer population) {
-        this.population = population;
+    public void seteventEnd(Timestamp eventEnd) {
+        this.eventEnd = eventEnd;
     }
 
-    public Boolean getactive() {
-        return active;
+    public String getreason() {
+        return reason;
     }
 
-    public void setactive(Boolean active) {
-        this.active = active;
+    public void setreason(String reason) {
+        this.reason = reason;
     }
 
-    public LocalDateTime getcreatedAt() {
-        return createdAt;
+    public Long gettriggeredForecastId () {
+        return triggeredForecastId;
     }
 
-    public void setcreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void settriggeredForecastId (Long triggeredForecastId ) {
+        this.triggeredForecastId = triggeredForecastId ;
     }
 
-    public LocalDateTime getupdatedAt() {
+    public LocalDateTime getexpectedDemandReductionMW() {
         return updatedAt;
     }
 
-    public void setupdatedAt(LocalDateTime updatedAt) {
+    public void setexpectedDemandReductionMW(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 }
