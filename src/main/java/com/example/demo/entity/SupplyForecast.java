@@ -1,30 +1,63 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Min;
-
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "supply_forecasts")
 public class SupplyForecast {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Min(0)
-    private Double availableSupplyMW;
+    private Double totalSupply;
+    private Double renewableSupply;
+    private Double demandForecast;
 
-    private Instant forecastStart;
-    private Instant forecastEnd;
+    private LocalDateTime forecastTime;
 
-    private Instant generatedAt;
+    // ✅ REQUIRED: No-args constructor
+    public SupplyForecast() {}
 
-    @PrePersist
-    public void onGenerate() {
-        generatedAt = Instant.now();
+    // -------- GETTERS & SETTERS --------
+
+    public Long getId() {
+        return id;
     }
 
-    // getters & setters
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Double getTotalSupply() {
+        return totalSupply;
+    }
+
+    public void setTotalSupply(Double totalSupply) {
+        this.totalSupply = totalSupply;
+    }
+
+    public Double getRenewableSupply() {
+        return renewableSupply;
+    }
+
+    public void setRenewableSupply(Double renewableSupply) {
+        this.renewableSupply = renewableSupply;
+    }
+
+    public Double getDemandForecast() {
+        return demandForecast;
+    }
+
+    public void setDemandForecast(Double demandForecast) {
+        this.demandForecast = demandForecast;
+    }
+
+    public LocalDateTime getForecastTime() {
+        return forecastTime;
+    }
+
+    public void setForecastTime(LocalDateTime forecastTime) {
+        this.forecastTime = forecastTime;
+    }
 }
