@@ -34,9 +34,7 @@ public class AppUser {
     @Column(nullable = false)
     private Boolean active = true;
 
-    // Constructors
-    public AppUser() {
-    }
+    public AppUser() {}
 
     public AppUser(String email, String password, Set<Role> roles, Boolean active) {
         this.email = email;
@@ -45,7 +43,6 @@ public class AppUser {
         this.active = active;
     }
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -66,7 +63,6 @@ public class AppUser {
         return password;
     }
 
-    // Password should be encrypted in service layer
     public void setPassword(String password) {
         this.password = password;
     }

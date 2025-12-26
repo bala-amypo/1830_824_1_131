@@ -1,90 +1,53 @@
-import javax.persistence.*;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import java.time.Instant;
+package com.example.demo.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Future;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "load_shedding_event")
 public class LoadSheddingEvent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "zone_id", nullable = false)
-    private Zone zone;
+    @NotNull
+    private LocalDateTime eventStart;
 
     @NotNull
-    @Column(name = "event_start", nullable = false)
-    private Instant eventStart;
+    @Future
+    private LocalDateTime restoredAt;
 
-    @NotNull
-    @Column(name = "event_end", nullable = false)
-    private Instant eventEnd;
-
-    @Column(name = "reason")
-    private String reason;
-
-    @Column(name = "triggered_by_forecast_id")
-    private Long triggeredByForecastId;
-
-    @Min(0)
-    @Column(name = "expected_demand_reduction_mw", nullable = false)
-    private Double expectedDemandReductionMW;
-
+    // Constructors
     public LoadSheddingEvent() {
     }
 
+    // Getters and Setters
     public Long getId() {
         return id;
     }
 
-    public Zone getZone() {
-        return zone;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setZone(Zone zone) {
-        this.zone = zone;
-    }
-
-    public Instant getEventStart() {
+    public LocalDateTime getEventStart() {
         return eventStart;
     }
 
-    public void setEventStart(Instant eventStart) {
+    public void setEventStart(LocalDateTime eventStart) {
         this.eventStart = eventStart;
     }
 
-    public Instant getEventEnd() {
-        return eventEnd;
+    public LocalDateTime getRestoredAt() {
+        return restoredAt;
     }
 
-    public void setEventEnd(Instant eventEnd) {
-        this.eventEnd = eventEnd;
-    }
-
-    public String getReason() {
-        return reason;
-    }
-
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
-
-    public Long getTriggeredByForecastId() {
-        return triggeredByForecastId;
-    }
-
-    public void setTriggeredByForecastId(Long triggeredByForecastId) {
-        this.triggeredByForecastId = triggeredByForecastId;
-    }
-
-    public Double getExpectedDemandReductionMW() {
-        return expectedDemandReductionMW;
-    }
-
-    public void setExpectedDemandReductionMW(Double expectedDemandReductionMW) {
-        this.expectedDemandReductionMW = expectedDemandReductionMW;
+    public void setRestoredAt(LocalDateTime restoredAt) {
+        this.restoredAt = restoredAt;
     }
 }

@@ -13,7 +13,7 @@ public class ZoneRestorationRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long zoneId;   // ✅ MUST EXIST
+    private Long zoneId;   
 
     public ZoneRestorationRecord() {}
 
