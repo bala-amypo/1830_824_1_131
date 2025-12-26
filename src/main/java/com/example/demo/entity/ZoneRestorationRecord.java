@@ -1,31 +1,27 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.*;
 import lombok.*;
-
+import jakarta.persistence.*;
 import java.time.Instant;
 
 @Entity
-@Table(name = "zone_restoration_record")
-@Getter
-@Setter
+@Table(name = "zone_restoration_records")
+@Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class ZoneRestorationRecord {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToOne(optional = false)
+    
+    @ManyToOne
+    @JoinColumn(name = "zone_id")
     private Zone zone;
-
-    @Column(nullable = false)
-    private Long eventId;
-
-    @Column(nullable = false)
+    
     private Instant restoredAt;
-
+    
+    private Long eventId;
+    
     private String notes;
 }
