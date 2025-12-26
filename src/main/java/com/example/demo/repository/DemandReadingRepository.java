@@ -7,15 +7,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface DemandReadingRepository
-        extends JpaRepository<DemandReading, Long> {
+public interface DemandReadingRepository extends JpaRepository<DemandReading, Long> {
 
     List<DemandReading> findByZoneId(Long zoneId);
 
-    Page<DemandReading> findByZoneId(
-            Long zoneId,
-            Pageable pageable
-    );
+    Page<DemandReading> findByZoneId(Long zoneId, Pageable pageable);
 
     DemandReading findFirstByZoneIdOrderByRecordedAtDesc(Long zoneId);
 }
