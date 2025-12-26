@@ -1,9 +1,6 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.PastOrPresent;
 import java.time.Instant;
 
 @Entity
@@ -14,17 +11,12 @@ public class DemandReading {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "zone_id", nullable = false)
-    private Zone zone;
+    @Column(name = "zone_id", nullable = false)
+    private Long zoneId;
 
-    @NotNull
-    @Min(0)
     @Column(name = "demand_mw", nullable = false)
     private Double demandMW;
 
-    @NotNull
-    @PastOrPresent
     @Column(name = "recorded_at", nullable = false)
     private Instant recordedAt;
 
@@ -35,12 +27,12 @@ public class DemandReading {
         return id;
     }
 
-    public Zone getZone() {
-        return zone;
+    public Long getZoneId() {
+        return zoneId;
     }
 
-    public void setZone(Zone zone) {
-        this.zone = zone;
+    public void setZoneId(Long zoneId) {
+        this.zoneId = zoneId;
     }
 
     public Double getDemandMW() {
