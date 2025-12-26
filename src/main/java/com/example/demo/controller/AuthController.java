@@ -12,27 +12,34 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/auth")
 @Tag(name = "Authentication", description = "APIs for user authentication")
 public class AuthController {
-    
+
     private final AppUserService userService;
-    
+
     public AuthController(AppUserService userService) {
         this.userService = userService;
     }
-    
+
     @PostMapping("/register")
     public ResponseEntity<AppUser> register(@RequestBody AuthRequest request) {
-        AppUser user = userService.register(request.getEmail(), request.getPassword(), "ROLE_USER");
+        AppUser user = userService.register(
+                request.getEmail(),
+                request.getPassword(),
+                "ROLE_USER"
+        );
         return ResponseEntity.ok(user);
     }
-    
+
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest request) {
-        String token = userService.login(request.getEmail(), request.getPassword());
-        
+        String token = userService.login(
+                request.getEmail(),
+                request.getPassword()
+        );
+
         AuthResponse response = AuthResponse.builder()
-            .token(token)
-            .build();
-        
+                .token(token)
+                .build();
+
         return ResponseEntity.ok(response);
     }
 }
