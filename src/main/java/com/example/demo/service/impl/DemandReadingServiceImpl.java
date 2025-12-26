@@ -4,9 +4,6 @@ import com.example.demo.entity.DemandReading;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.DemandReadingRepository;
 import com.example.demo.service.DemandReadingService;
-
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,40 +17,49 @@ public class DemandReadingServiceImpl implements DemandReadingService {
         this.demandReadingRepository = demandReadingRepository;
     }
 
+    // CREATE reading
     @Override
     public DemandReading createReading(DemandReading reading) {
         return demandReadingRepository.save(reading);
     }
 
+    // GET all readings for zone
     @Override
-    public List<DemandReading> getReadingsByZone(Long zoneId) {
-        return demandReadingRepository.findByZoneId(zoneId);
+    public List<DemandReading> getReadingsForZone(Long zoneId) {
+        List<DemandReading> readings =
+                demandReadingRepository.findByZoneIdOrderByRecordedAtDesc(zoneId);
+
+        if (readings.isEmpty()) {
+            throw new ResourceNotFoundException(
+                    "No demand readings found for zone id: " + zoneId);
+        }
+
+        return readings;
     }
 
+    // GET latest reading
     @Override
     public DemandReading getLatestReading(Long zoneId) {
-        DemandReading reading =
-                demandReadingRepository.findFirstByZoneIdOrderByRecordedAtDesc(zoneId);
-
-        if (reading == null) {
-            throw new ResourceNotFoundException(
-                    "No demand reading found for zone id: " + zoneId
-            );
-        }
-        return reading;
+        return demandReadingRepository
+                .findFirstByZoneIdOrderByRecordedAtDesc(zoneId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "No latest reading found for zone id: " + zoneId));
     }
 
+    // GET recent N readings
     @Override
     public List<DemandReading> getRecentReadings(Long zoneId, int limit) {
-        return demandReadingRepository
-                .findByZoneId(
-                        zoneId,
-                        PageRequest.of(
-                                0,
-                                limit,
-                                Sort.by(Sort.Direction.DESC, "recordedAt")
-                        )
-                )
-                .getContent();
+        List<DemandReading> readings =
+                demandReadingRepository.findByZoneIdOrderByRecordedAtDesc(zoneId);
+
+        if (readings.isEmpty()) {
+            throw new ResourceNotFoundException(
+                    "No demand readings found for zone id: " + zoneId);
+        }
+
+        return readings.stream()
+                .limit(limit)
+                .toList();
     }
 }
