@@ -52,12 +52,6 @@
             <version>2.2.0</version>
         </dependency>
         <!-- JWT -->
-<dependency>
-    <groupId>io.jsonwebtoken</groupId>
-    <artifactId>jjwt-api</artifactId>
-    <version>0.11.5</version>
-</dependency>
-<!-- Mockito (for unit tests) -->
 <!-- Mockito for unit testing -->
 <dependency>
     <groupId>org.mockito</groupId>
@@ -65,6 +59,15 @@
     <version>5.11.0</version>
     <scope>test</scope>
 </dependency>
+
+<!-- Mockito + JUnit 5 integration -->
+<dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-junit-jupiter</artifactId>
+    <version>5.11.0</version>
+    <scope>test</scope>
+</dependency>
+
 
 <!-- Mockito + JUnit 5 integration -->
 <dependency>
