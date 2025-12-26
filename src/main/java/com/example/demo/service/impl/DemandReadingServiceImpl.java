@@ -37,7 +37,8 @@ public class DemandReadingServiceImpl implements DemandReadingService {
 
     @Override
     public List<DemandReading> getReadingsForZone(Long zoneId) {
-        return demandReadingRepository.findByZoneId(zoneId);
+        demandReadingRepository.findByZoneIdOrderByRecordedAtDesc(zoneId);
+
     }
 
     @Override

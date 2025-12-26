@@ -1,40 +1,58 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+
+import java.time.LocalDateTime;
 
 @Entity
-
+@Table(name = "zone_restoration_record")
 public class ZoneRestorationRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long zoneId;   
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "zone_id", nullable = false)
+    private Zone zone;
 
-    public ZoneRestorationRecord() {}
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "event_id", nullable = false)
+    private LoadSheddingEvent loadSheddingEvent;
 
-    public ZoneRestorationRecord(Long id, Long zoneId) {
-        this.id = id;
-        this.zoneId = zoneId;
+    @NotNull
+    @Column(name = "restored_at", nullable = false)
+    private LocalDateTime restoredAt;
+
+    public ZoneRestorationRecord() {
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Zone getZone() {
+        return zone;
     }
 
-    public Long getZoneId() {
-        return zoneId;
+    public void setZone(Zone zone) {
+        this.zone = zone;
     }
 
-    public void setZoneId(Long zoneId) {
-        this.zoneId = zoneId;
+    public LoadSheddingEvent getLoadSheddingEvent() {
+        return loadSheddingEvent;
+    }
+
+    public void setLoadSheddingEvent(LoadSheddingEvent loadSheddingEvent) {
+        this.loadSheddingEvent = loadSheddingEvent;
+    }
+
+    public LocalDateTime getRestoredAt() {
+        return restoredAt;
+    }
+
+    public void setRestoredAt(LocalDateTime restoredAt) {
+        this.restoredAt = restoredAt;
     }
 }
