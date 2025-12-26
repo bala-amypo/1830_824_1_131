@@ -1,16 +1,9 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
-@Table(
-    name = "app_user",
-    uniqueConstraints = {
-        @UniqueConstraint(columnNames = "email")
-    }
-)
+@Table(name = "app_user")
 public class AppUser {
 
     @Id
@@ -23,32 +16,20 @@ public class AppUser {
     @Column(nullable = false)
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-        name = "user_roles",
-        joinColumns = @JoinColumn(name = "user_id"),
-        inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
-    private Set<Role> roles = new HashSet<>();
-
     @Column(nullable = false)
-    private Boolean active = true;
+    private String role; // ROLE_USER / ROLE_ADMIN
 
-    public AppUser() {}
+    public AppUser() {
+    }
 
-    public AppUser(String email, String password, Set<Role> roles, Boolean active) {
+    public AppUser(String email, String password, String role) {
         this.email = email;
         this.password = password;
-        this.roles = roles;
-        this.active = active;
+        this.role = role;
     }
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getEmail() {
@@ -67,19 +48,11 @@ public class AppUser {
         this.password = password;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public String getRole() {
+        return role;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
-
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
+    public void setRole(String role) {
+        this.role = role;
     }
 }
