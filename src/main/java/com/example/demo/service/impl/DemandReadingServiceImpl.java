@@ -4,7 +4,6 @@ import com.example.demo.entity.DemandReading;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.DemandReadingRepository;
 import com.example.demo.service.DemandReadingService;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,7 +19,7 @@ public class DemandReadingServiceImpl implements DemandReadingService {
 
     @Override
     public DemandReading createReading(DemandReading reading) {
-        return demandReadingRepository.save(reading); // ✅ instance call
+        return demandReadingRepository.save(reading);
     }
 
     @Override
@@ -29,22 +28,12 @@ public class DemandReadingServiceImpl implements DemandReadingService {
     }
 
     @Override
-    public DemandReading getLatestReadingByZone(Long zoneId) {
+    public DemandReading getLatestReading(Long zoneId) {
         return demandReadingRepository
                 .findFirstByZoneIdOrderByRecordedAtDesc(zoneId)
                 .orElseThrow(() ->
                         new ResourceNotFoundException(
                                 "No demand reading found for zone id: " + zoneId
                         ));
-    }
-
-    @Override
-    public List<DemandReading> getRecentReadings(Long zoneId, int limit) {
-        return demandReadingRepository
-                .findByZoneIdOrderByRecordedAtDesc(
-                        zoneId,
-                        PageRequest.of(0, limit)
-                )
-                .getContent();
     }
 }

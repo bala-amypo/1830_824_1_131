@@ -7,9 +7,7 @@ public interface DemandReadingService {
 
     DemandReading createReading(DemandReading reading);
 
-    List<DemandReading> getReadingsForZone(Long zoneId);
+    List<DemandReading> getReadingsByZone(Long zoneId);
 
     DemandReading getLatestReading(Long zoneId);
-
-    List<DemandReading> getRecentReadings(Long zoneId, int limit);
 }
