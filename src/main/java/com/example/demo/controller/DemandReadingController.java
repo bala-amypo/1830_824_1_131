@@ -2,47 +2,41 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.DemandReading;
 import com.example.demo.service.DemandReadingService;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/demand-readings")
+@Tag(name = "Demand Reading Management", description = "APIs for managing power demand readings")
 public class DemandReadingController {
-
-    private final DemandReadingService demandReadingService;
-
-    @Autowired
-    public DemandReadingController(DemandReadingService demandReadingService) {
-        this.demandReadingService = demandReadingService;
+    
+    private final DemandReadingService readingService;
+    
+    public DemandReadingController(DemandReadingService readingService) {
+        this.readingService = readingService;
     }
-
+    
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public DemandReading create(@RequestBody DemandReading demandReading) {
-        return demandReadingService.create(demandReading);
+    public ResponseEntity<DemandReading> createReading(@RequestBody DemandReading reading) {
+        return ResponseEntity.ok(readingService.createReading(reading));
     }
-
+    
     @GetMapping("/zone/{zoneId}")
-    public List<DemandReading> getByZone(@PathVariable Long zoneId) {
-        return demandReadingService.getByZone(zoneId);
+    public ResponseEntity<List<DemandReading>> getReadingsForZone(@PathVariable Long zoneId) {
+        return ResponseEntity.ok(readingService.getReadingsForZone(zoneId));
     }
-
+    
     @GetMapping("/zone/{zoneId}/latest")
-    public DemandReading getLatest(@PathVariable Long zoneId) {
-        return demandReadingService.getLatestByZone(zoneId);
+    public ResponseEntity<DemandReading> getLatestReading(@PathVariable Long zoneId) {
+        return ResponseEntity.ok(readingService.getLatestReading(zoneId));
     }
-
-    @GetMapping("/zone/{zoneId}/paged")
-    public Page<DemandReading> getPaged(
-            @PathVariable Long zoneId,
-            @RequestParam int page,
-            @RequestParam int size) {
-
-        return demandReadingService.getPagedByZone(zoneId, page, size);
+    
+    @GetMapping("/zone/{zoneId}/recent")
+    public ResponseEntity<List<DemandReading>> getRecentReadings(
+            @PathVariable Long zoneId, 
+            @RequestParam(defaultValue = "10") int limit) {
+        return ResponseEntity.ok(readingService.getRecentReadings(zoneId, limit));
     }
 }
