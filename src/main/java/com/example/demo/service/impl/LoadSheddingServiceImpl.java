@@ -1,50 +1,82 @@
-// package com.example.demo.service.impl;
+package com.example.demo.service.impl;
 
-// import com.example.demo.model.LoadSheddingEvent;
-// import com.example.demo.service.LoadSheddingService;
-// import org.springframework.stereotype.Service;
+import com.example.demo.entity.*;
+import com.example.demo.exception.ResourceNotFoundException;
+import com.example.demo.repository.*;
+import com.example.demo.service.LoadSheddingService;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-// import java.time.LocalDateTime;
-// import java.util.ArrayList;
-// import java.util.List;
+import java.time.LocalDateTime;
+import java.util.List;
 
-// @Service
-// public class LoadSheddingServiceImpl implements LoadSheddingService {
+@Service
+@Transactional
+public class LoadSheddingServiceImpl implements LoadSheddingService {
 
-//     // In-memory store - works without DB
-//     private final List<LoadSheddingEvent> events = new ArrayList<>();
-//     private long idCounter = 1;
+    private final SupplyForecastRepository supplyForecastRepository;
+    private final ZoneRepository zoneRepository;
+    private final LoadSheddingEventRepository loadSheddingEventRepository;
 
-//     @Override
-//     public LoadSheddingEvent triggerLoadShedding(Long forecastId) {
+    public LoadSheddingServiceImpl(
+            SupplyForecastRepository supplyForecastRepository,
+            ZoneRepository zoneRepository,
+            LoadSheddingEventRepository loadSheddingEventRepository) {
+        this.supplyForecastRepository = supplyForecastRepository;
+        this.zoneRepository = zoneRepository;
+        this.loadSheddingEventRepository = loadSheddingEventRepository;
+    }
 
-//         LoadSheddingEvent event = new LoadSheddingEvent();
-//         event.setId(idCounter++);
-//         event.setForecastId(forecastId);
-//         event.setTriggeredAt(LocalDateTime.now());
-//         event.setStatus("TRIGGERED");
+    @Override
+    public LoadSheddingEvent triggerLoadShedding(Long forecastId) {
 
-//         events.add(event);
+        // 1. Fetch forecast
+        SupplyForecast forecast = supplyForecastRepository.findById(forecastId)
+                .orElseThrow(() -> new ResourceNotFoundException("Forecast not found"));
 
-//         return event;
-//     }
+        double demand = forecast.getDemandMW();
+        double supply = forecast.getSupplyMW();
 
-//     @Override
-//     public LoadSheddingEvent getEventById(Long id) {
-//         return events.stream()
-//                 .filter(e -> e.getId().equals(id))
-//                 .findFirst()
-//                 .orElse(null);
-//     }
+        // 2. Check overload
+        if (demand <= supply) {
+            return null; // No load shedding required
+        }
 
-//     @Override
-//     public List<LoadSheddingEvent> getEventsForZone(Long zoneId) {
-//         // No zone filtering → return all instead
-//         return new ArrayList<>(events);
-//     }
+        // 3. Find lowest priority active zones
+        List<Zone> zones =
+                zoneRepository.findByActiveTrueOrderByPriorityLevelAsc();
 
-//     @Override
-//     public List<LoadSheddingEvent> getAllEvents() {
-//         return new ArrayList<>(events);
-//     }
-// }
+        // 4. Shed load until demand <= supply
+        for (Zone zone : zones) {
+            if (demand <= supply) {
+                break;
+            }
+            demand -= zone.getLoadMW();
+            zone.setActive(false);
+            zoneRepository.save(zone);
+        }
+
+        // 5. Create LoadSheddingEvent
+        LoadSheddingEvent event = new LoadSheddingEvent();
+        event.setForecast(forecast);
+        event.setEventStart(LocalDateTime.now());
+
+        return loadSheddingEventRepository.save(event);
+    }
+
+    @Override
+    public LoadSheddingEvent getEventById(Long id) {
+        return loadSheddingEventRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Event not found"));
+    }
+
+    @Override
+    public List<LoadSheddingEvent> getEventsForZone(Long zoneId) {
+        return loadSheddingEventRepository.findByZoneId(zoneId);
+    }
+
+    @Override
+    public List<LoadSheddingEvent> getAllEvents() {
+        return loadSheddingEventRepository.findAll();
+    }
+}
