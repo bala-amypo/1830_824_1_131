@@ -1,32 +1,59 @@
-// package com.example.demo.entity;
+import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+import java.time.Instant;
 
-// import jakarta.persistence.*;
-// import jakarta.validation.constraints.Min;
+@Entity
+@Table(name = "demand_reading")
+public class DemandReading {
 
-// import java.time.Instant;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-// @Entity
-// @Table(name = "demand_readings")
-// public class DemandReading {
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "zone_id", nullable = false)
+    private Zone zone;
 
-//     @Id
-//     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//     private Long id;
+    @NotNull
+    @Min(0)
+    @Column(name = "demand_mw", nullable = false)
+    private Double demandMW;
 
-//     @ManyToOne(optional = false)
-//     private Zone zone;
+    @NotNull
+    @PastOrPresent
+    @Column(name = "recorded_at", nullable = false)
+    private Instant recordedAt;
 
-//     @Min(0)
-//     private Double demandMW;
+    public DemandReading() {
+    }
 
-//     private Instant recordedAt;
+    public Long getId() {
+        return id;
+    }
 
-//     @PrePersist
-//     public void validateTime() {
-//         if (recordedAt.isAfter(Instant.now())) {
-//             throw new IllegalArgumentException("recordedAt cannot be in the future");
-//         }
-//     }
+    public Zone getZone() {
+        return zone;
+    }
 
-//     // getters & setters
-// }
+    public void setZone(Zone zone) {
+        this.zone = zone;
+    }
+
+    public Double getDemandMW() {
+        return demandMW;
+    }
+
+    public void setDemandMW(Double demandMW) {
+        this.demandMW = demandMW;
+    }
+
+    public Instant getRecordedAt() {
+        return recordedAt;
+    }
+
+    public void setRecordedAt(Instant recordedAt) {
+        this.recordedAt = recordedAt;
+    }
+}
