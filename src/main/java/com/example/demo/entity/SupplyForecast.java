@@ -16,10 +16,10 @@ public class SupplyForecast {
 
     private LocalDateTime forecastTime;
 
-    // ✅ REQUIRED: No-args constructor
+   
     public SupplyForecast() {}
 
-    // -------- GETTERS & SETTERS --------
+   
 
     public Long getId() {
         return id;

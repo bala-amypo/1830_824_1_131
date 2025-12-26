@@ -22,11 +22,10 @@ public class LoadSheddingEvent {
     @Future
     private LocalDateTime restoredAt;
 
-    // Constructors
+   
     public LoadSheddingEvent() {
     }
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }
