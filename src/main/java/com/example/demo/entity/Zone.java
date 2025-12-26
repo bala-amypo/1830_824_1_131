@@ -1,7 +1,7 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -16,7 +16,7 @@ public class Zone {
     private String zoneName;
 
     @NotNull
-    @Min(0)
+    @DecimalMin(value = "0.0", inclusive = true)
     @Column(name = "load_mw", nullable = false)
     private Double loadMW;
 
@@ -31,8 +31,13 @@ public class Zone {
     public Zone() {
     }
 
+    // 🔴 IMPORTANT FOR TEST CASES
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getZoneName() {
