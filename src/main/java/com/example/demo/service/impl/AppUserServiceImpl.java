@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class AppUserServiceImpl implements AppUserService {
     @Override
-    public AppUser login(String email, String password) {
-        // logic
-        return null;
-    }
+public String login(String email, String password) {
+    return "dummy-token";
+}
+
 }
