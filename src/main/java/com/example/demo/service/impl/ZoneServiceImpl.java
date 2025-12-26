@@ -96,7 +96,7 @@ public class ZoneServiceImpl implements ZoneService {
                 );
 
         zone.setActive(false);
-        zone.setUpdatedAt(Instant.now());
+       
 
         zoneRepo.save(zone);
     }
