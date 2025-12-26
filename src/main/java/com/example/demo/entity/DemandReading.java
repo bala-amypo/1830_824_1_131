@@ -1,7 +1,10 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-import java.time.Instant;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "demand_reading")
@@ -11,28 +14,37 @@ public class DemandReading {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "zone_id", nullable = false)
-    private Long zoneId;
+    @ManyToOne
+    @JoinColumn(name = "zone_id", nullable = false)
+    private Zone zone;
 
-    @Column(name = "demand_mw", nullable = false)
+    @NotNull
+    @Min(0)
+    @Column(nullable = false)
     private Double demandMW;
 
-    @Column(name = "recorded_at", nullable = false)
-    private Instant recordedAt;
+    @Column(nullable = false)
+    private LocalDateTime recordedAt;
 
     public DemandReading() {
     }
+
+    // 🔑 getters & setters
 
     public Long getId() {
         return id;
     }
 
-    public Long getZoneId() {
-        return zoneId;
+    public void setId(Long id) {   // IMPORTANT for tests
+        this.id = id;
     }
 
-    public void setZoneId(Long zoneId) {
-        this.zoneId = zoneId;
+    public Zone getZone() {
+        return zone;
+    }
+
+    public void setZone(Zone zone) {
+        this.zone = zone;
     }
 
     public Double getDemandMW() {
@@ -43,11 +55,11 @@ public class DemandReading {
         this.demandMW = demandMW;
     }
 
-    public Instant getRecordedAt() {
+    public LocalDateTime getRecordedAt() {
         return recordedAt;
     }
 
-    public void setRecordedAt(Instant recordedAt) {
+    public void setRecordedAt(LocalDateTime recordedAt) {
         this.recordedAt = recordedAt;
     }
 }
