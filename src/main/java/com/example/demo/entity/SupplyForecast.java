@@ -1,61 +1,37 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
+import lombok.*;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 @Entity
 @Table(name = "supply_forecast")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class SupplyForecast {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @Min(0)
-    @Column(name = "demand_mw", nullable = false)
-    private Double demandMW;
+    @Column(nullable = false)
+    private Double availableSupplyMW;
 
-    @NotNull
-    @Min(0)
-    @Column(name = "supply_mw", nullable = false)
-    private Double supplyMW;
+    @Column(nullable = false)
+    private Instant forecastStart;
 
-    @NotNull
-    @Column(name = "generated_at", nullable = false)
-    private LocalDateTime generatedAt;
+    @Column(nullable = false)
+    private Instant forecastEnd;
 
-    public SupplyForecast() {
-    }
+    @Column(nullable = false, updatable = false)
+    private Instant generatedAt;
 
-    public Long getId() {
-        return id;
-    }
-
-    public Double getDemandMW() {
-        return demandMW;
-    }
-
-    public void setDemandMW(Double demandMW) {
-        this.demandMW = demandMW;
-    }
-
-    public Double getSupplyMW() {
-        return supplyMW;
-    }
-
-    public void setSupplyMW(Double supplyMW) {
-        this.supplyMW = supplyMW;
-    }
-
-    public LocalDateTime getGeneratedAt() {
-        return generatedAt;
-    }
-
-    public void setGeneratedAt(LocalDateTime generatedAt) {
-        this.generatedAt = generatedAt;
+    @PrePersist
+    public void onCreate() {
+        this.generatedAt = Instant.now();
     }
 }

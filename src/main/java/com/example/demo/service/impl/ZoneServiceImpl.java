@@ -1,65 +1,103 @@
-// package com.example.demo.service.impl;
+package com.example.demo.service.impl;
 
-// import com.example.demo.entity.Zone;
-// import com.example.demo.repository.ZoneRepository;
-// import com.example.demo.service.ZoneService;
-// import org.springframework.stereotype.Service;
+import com.example.demo.entity.Zone;
+import com.example.demo.exception.BadRequestException;
+import com.example.demo.exception.ResourceNotFoundException;
+import com.example.demo.repository.ZoneRepository;
+import com.example.demo.service.ZoneService;
+import org.springframework.stereotype.Service;
 
-// import java.time.LocalDateTime;
-// import java.util.List;
+import java.time.Instant;
+import java.util.List;
 
-// @Service
-// public class ZoneServiceImpl implements ZoneService {
+@Service
+public class ZoneServiceImpl implements ZoneService {
 
-//     private final ZoneRepository zoneRepository;
+    private final ZoneRepository zoneRepo;
 
-//     public ZoneServiceImpl(ZoneRepository zoneRepository) {
-//         this.zoneRepository = zoneRepository;
-//     }
+    public ZoneServiceImpl(ZoneRepository zoneRepo) {
+        this.zoneRepo = zoneRepo;
+    }
 
-//     @Override
-//     public Zone createZone(Zone zone) {
+    // ---------------- CREATE ----------------
+    @Override
+    public Zone createZone(Zone zone) {
 
-//         zone.setActive(true);
-//         zone.setCreatedAt(LocalDateTime.now());
-//         zone.setUpdatedAt(LocalDateTime.now());
+        if (zone.getPriorityLevel() == null || zone.getPriorityLevel() < 1) {
+            throw new BadRequestException("Priority must be >= 1");
+        }
 
-//         return zoneRepository.save(zone);
-//     }
+        zoneRepo.findByZoneName(zone.getZoneName())
+                .ifPresent(z -> {
+                    throw new BadRequestException("Zone name must be unique");
+                });
 
-//     @Override
-//     public Zone updateZone(Long id, Zone zone) {
+        if (zone.getActive() == null) {
+            zone.setActive(true);
+        }
 
-//         Zone existingZone = zoneRepository.findById(id)
-//                 .orElseThrow(() -> new RuntimeException("Zone not found"));
+        zone.setCreatedAt(Instant.now());
+        zone.setUpdatedAt(Instant.now());
 
-//         existingZone.setZoneName(zone.getZoneName());
-//         existingZone.setPriorityLevel(zone.getPriorityLevel());
-//         existingZone.setPopulation(zone.getPopulation());
-//         existingZone.setUpdatedAt(LocalDateTime.now());
+        return zoneRepo.save(zone);
+    }
 
-//         return zoneRepository.save(existingZone);
-//     }
+    // ---------------- UPDATE ----------------
+    @Override
+    public Zone updateZone(Long id, Zone input) {
 
-//     @Override
-//     public Zone getZoneById(Long id) {
-//         return zoneRepository.findById(id)
-//                 .orElseThrow(() -> new RuntimeException("Zone not found"));
-//     }
+        Zone existing = zoneRepo.findById(id)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Zone not found")
+                );
 
-//     @Override
-//     public List<Zone> getAllZones() {
-//         return zoneRepository.findAll();
-//     }
+        if (input.getZoneName() != null) {
+            existing.setZoneName(input.getZoneName());
+        }
 
-//     @Override
-//     public void deactivateZone(Long id) {
-//         Zone zone = zoneRepository.findById(id)
-//                 .orElseThrow(() -> new RuntimeException("Zone not found"));
+        if (input.getPriorityLevel() != null) {
+            if (input.getPriorityLevel() < 1) {
+                throw new BadRequestException("Priority must be >= 1");
+            }
+            existing.setPriorityLevel(input.getPriorityLevel());
+        }
 
-//         zone.setActive(false);
-//         zone.setUpdatedAt(LocalDateTime.now());
+        if (input.getActive() != null) {
+            existing.setActive(input.getActive());
+        }
 
-//         zoneRepository.save(zone);
-//     }
-// }
+        existing.setUpdatedAt(Instant.now());
+
+        return zoneRepo.save(existing);
+    }
+
+    // ---------------- GET BY ID ----------------
+    @Override
+    public Zone getZoneById(Long id) {
+        return zoneRepo.findById(id)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Zone not found")
+                );
+    }
+
+    // ---------------- GET ALL ----------------
+    @Override
+    public List<Zone> getAllZones() {
+        return zoneRepo.findAll();
+    }
+
+    // ---------------- DEACTIVATE ----------------
+    @Override
+    public void deactivateZone(Long id) {
+
+        Zone zone = zoneRepo.findById(id)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Zone not found")
+                );
+
+        zone.setActive(false);
+        zone.setUpdatedAt(Instant.now());
+
+        zoneRepo.save(zone);
+    }
+}
