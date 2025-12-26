@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
+import java.time.Instant;
+
 @Entity
 @Table(name = "zone")
 public class Zone {
@@ -16,21 +18,33 @@ public class Zone {
     private String zoneName;
 
     @NotNull
-    @Min(0)
-    @Column(name = "load_mw", nullable = false)
-    private Double loadMW;
-
-    @NotNull
     @Column(nullable = false)
     private Boolean active = true;
 
     @NotNull
+    @Min(1)
     @Column(name = "priority_level", nullable = false)
     private Integer priorityLevel;
 
-    public Zone() {
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private Instant createdAt;
+
+    @Column(name = "updated_at")
+    private Instant updatedAt;
+
+    // ---------- lifecycle ----------
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = Instant.now();
+        this.updatedAt = Instant.now();
     }
 
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = Instant.now();
+    }
+
+    // ---------- getters & setters ----------
     public Long getId() {
         return id;
     }
@@ -41,14 +55,6 @@ public class Zone {
 
     public void setZoneName(String zoneName) {
         this.zoneName = zoneName;
-    }
-
-    public Double getLoadMW() {
-        return loadMW;
-    }
-
-    public void setLoadMW(Double loadMW) {
-        this.loadMW = loadMW;
     }
 
     public Boolean getActive() {
@@ -65,5 +71,17 @@ public class Zone {
 
     public void setPriorityLevel(Integer priorityLevel) {
         this.priorityLevel = priorityLevel;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public Instant getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Instant updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }
