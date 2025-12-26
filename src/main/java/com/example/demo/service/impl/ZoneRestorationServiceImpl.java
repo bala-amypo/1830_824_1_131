@@ -10,31 +10,18 @@ import java.time.Instant;
 @Service
 public class ZoneRestorationServiceImpl implements ZoneRestorationService {
 
-    private final ZoneRepository zoneRepository;
-
-    public ZoneRestorationServiceImpl(ZoneRepository zoneRepository) {
-        this.zoneRepository = zoneRepository;
+    @Override
+    public ZoneRestorationRecord createRecord(ZoneRestorationRecord record) {
+        return record;
     }
 
     @Override
-    public Zone restoreZone(Long zoneId) {
-        Zone zone = zoneRepository.findById(zoneId)
-                .orElseThrow(() -> new RuntimeException("Zone not found"));
-
-        zone.setActive(true);
-        zone.setUpdatedAt(Instant.now());
-
-        return zoneRepository.save(zone);
+    public ZoneRestorationRecord getRecordById(Long id) {
+        return null;
     }
 
     @Override
-    public Zone deactivateZone(Long zoneId) {
-        Zone zone = zoneRepository.findById(zoneId)
-                .orElseThrow(() -> new RuntimeException("Zone not found"));
-
-        zone.setActive(false);
-        zone.setUpdatedAt(Instant.now());
-
-        return zoneRepository.save(zone);
+    public List<ZoneRestorationRecord> getRecordsForZone(Long zoneId) {
+        return List.of();
     }
 }
