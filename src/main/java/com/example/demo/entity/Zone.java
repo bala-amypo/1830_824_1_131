@@ -14,5 +14,11 @@ public class Zone {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String zoneName;
+    private Integer priorityLevel;
+    private Long population;
+    private Boolean active;
+
+    private Instant createdAt;
+    private Instant updatedAt;
 }
