@@ -1,16 +1,17 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.DemandReading;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
 public interface DemandReadingService {
 
-    DemandReading createReading(DemandReading reading);
+    DemandReading create(DemandReading reading);
 
-    DemandReading getLatestReading(Long zoneId);
+    List<DemandReading> getByZone(Long zoneId);
 
-    List<DemandReading> getReadingsForZone(Long zoneId);
+    DemandReading getLatestByZone(Long zoneId);
 
-    List<DemandReading> getRecentReadings(Long zoneId, int limit);
+    Page<DemandReading> getPagedByZone(Long zoneId, int page, int size);
 }

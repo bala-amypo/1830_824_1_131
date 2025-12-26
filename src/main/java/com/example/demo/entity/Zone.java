@@ -1,74 +1,23 @@
-package com.example.demo.entity;
+import java.time.Instant;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotNull;
+@Column(name = "created_at")
+private Instant createdAt;
 
-@Entity
-@Table(name = "zone")
-public class Zone {
+@Column(name = "updated_at")
+private Instant updatedAt;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public Instant getCreatedAt() {
+    return createdAt;
+}
 
-    @Column(name = "zone_name", nullable = false, unique = true)
-    private String zoneName;
+public void setCreatedAt(Instant createdAt) {
+    this.createdAt = createdAt;
+}
 
-    @NotNull
-    @DecimalMin(value = "0.0", inclusive = true)
-    @Column(name = "load_mw", nullable = false)
-    private Double loadMW;
+public Instant getUpdatedAt() {
+    return updatedAt;
+}
 
-    @NotNull
-    @Column(nullable = false)
-    private Boolean active = true;
-
-    @NotNull
-    @Column(name = "priority_level", nullable = false)
-    private Integer priorityLevel;
-
-    public Zone() {
-    }
-
-    // 🔴 IMPORTANT FOR TEST CASES
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getZoneName() {
-        return zoneName;
-    }
-
-    public void setZoneName(String zoneName) {
-        this.zoneName = zoneName;
-    }
-
-    public Double getLoadMW() {
-        return loadMW;
-    }
-
-    public void setLoadMW(Double loadMW) {
-        this.loadMW = loadMW;
-    }
-
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
-
-    public Integer getPriorityLevel() {
-        return priorityLevel;
-    }
-
-    public void setPriorityLevel(Integer priorityLevel) {
-        this.priorityLevel = priorityLevel;
-    }
+public void setUpdatedAt(Instant updatedAt) {
+    this.updatedAt = updatedAt;
 }

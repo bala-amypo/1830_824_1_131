@@ -1,9 +1,11 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 @Entity
 @Table(name = "demand_reading")
@@ -18,13 +20,17 @@ public class DemandReading {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "zone_id", nullable = false)
     private Zone zone;
 
-    @Column(nullable = false)
-    private Double demandMw;
+    @NotNull
+    @Min(0)
+    @Column(name = "demand_mw", nullable = false)
+    private Double demandMW;   // 🔥 THIS WAS MISSING
 
-    @Column(nullable = false)
-    private LocalDateTime recordedAt;
+    @NotNull
+    @Column(name = "recorded_at", nullable = false)
+    private Instant recordedAt;
 }
