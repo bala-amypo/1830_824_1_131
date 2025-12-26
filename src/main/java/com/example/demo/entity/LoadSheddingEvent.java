@@ -1,28 +1,34 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Future;
+
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "load_shedding_event")
 public class LoadSheddingEvent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "zone_id", nullable = false)
+    private Zone zone;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "forecast_id", nullable = false)
+    private SupplyForecast forecast;
+
     @NotNull
+    @Column(name = "event_start", nullable = false)
     private LocalDateTime eventStart;
 
     @NotNull
-    @Future
-    private LocalDateTime restoredAt;
+    @Column(name = "event_end", nullable = false)
+    private LocalDateTime eventEnd;
 
-   
     public LoadSheddingEvent() {
     }
 
@@ -30,8 +36,20 @@ public class LoadSheddingEvent {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Zone getZone() {
+        return zone;
+    }
+
+    public void setZone(Zone zone) {
+        this.zone = zone;
+    }
+
+    public SupplyForecast getForecast() {
+        return forecast;
+    }
+
+    public void setForecast(SupplyForecast forecast) {
+        this.forecast = forecast;
     }
 
     public LocalDateTime getEventStart() {
@@ -42,11 +60,11 @@ public class LoadSheddingEvent {
         this.eventStart = eventStart;
     }
 
-    public LocalDateTime getRestoredAt() {
-        return restoredAt;
+    public LocalDateTime getEventEnd() {
+        return eventEnd;
     }
 
-    public void setRestoredAt(LocalDateTime restoredAt) {
-        this.restoredAt = restoredAt;
+    public void setEventEnd(LocalDateTime eventEnd) {
+        this.eventEnd = eventEnd;
     }
 }
