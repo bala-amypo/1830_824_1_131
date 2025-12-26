@@ -1,63 +1,61 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "supply_forecast")
 public class SupplyForecast {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Double totalSupply;
-    private Double renewableSupply;
-    private Double demandForecast;
+    @NotNull
+    @Min(0)
+    @Column(name = "demand_mw", nullable = false)
+    private Double demandMW;
 
-    private LocalDateTime forecastTime;
+    @NotNull
+    @Min(0)
+    @Column(name = "supply_mw", nullable = false)
+    private Double supplyMW;
 
-   
-    public SupplyForecast() {}
+    @NotNull
+    @Column(name = "generated_at", nullable = false)
+    private LocalDateTime generatedAt;
 
-   
+    public SupplyForecast() {
+    }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Double getDemandMW() {
+        return demandMW;
     }
 
-    public Double getTotalSupply() {
-        return totalSupply;
+    public void setDemandMW(Double demandMW) {
+        this.demandMW = demandMW;
     }
 
-    public void setTotalSupply(Double totalSupply) {
-        this.totalSupply = totalSupply;
+    public Double getSupplyMW() {
+        return supplyMW;
     }
 
-    public Double getRenewableSupply() {
-        return renewableSupply;
+    public void setSupplyMW(Double supplyMW) {
+        this.supplyMW = supplyMW;
     }
 
-    public void setRenewableSupply(Double renewableSupply) {
-        this.renewableSupply = renewableSupply;
+    public LocalDateTime getGeneratedAt() {
+        return generatedAt;
     }
 
-    public Double getDemandForecast() {
-        return demandForecast;
-    }
-
-    public void setDemandForecast(Double demandForecast) {
-        this.demandForecast = demandForecast;
-    }
-
-    public LocalDateTime getForecastTime() {
-        return forecastTime;
-    }
-
-    public void setForecastTime(LocalDateTime forecastTime) {
-        this.forecastTime = forecastTime;
+    public void setGeneratedAt(LocalDateTime generatedAt) {
+        this.generatedAt = generatedAt;
     }
 }

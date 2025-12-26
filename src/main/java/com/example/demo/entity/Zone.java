@@ -1,84 +1,69 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
+@Table(name = "zone")
 public class Zone {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    @Column(name = "zone_name", nullable = false, unique = true)
     private String zoneName;
 
+    @NotNull
+    @Min(0)
+    @Column(name = "load_mw", nullable = false)
+    private Double loadMW;
+
+    @NotNull
+    @Column(nullable = false)
+    private Boolean active = true;
+
+    @NotNull
+    @Column(name = "priority_level", nullable = false)
     private Integer priorityLevel;
-    private Integer population;
-    private Boolean active;
 
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
-
-    public Zone() {}
-
-    public Zone(Long id, String zoneName, Integer priorityLevel, Integer population,
-                Boolean active, LocalDateTime createdAt, LocalDateTime updatedAt) {
-        this.id = id;
-        this.zoneName = zoneName;
-        this.priorityLevel = priorityLevel;
-        this.population = population;
-        this.active = active;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+    public Zone() {
     }
 
     public Long getId() {
         return id;
     }
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getZoneName() {
         return zoneName;
     }
+
     public void setZoneName(String zoneName) {
         this.zoneName = zoneName;
     }
 
-    public Integer getPriorityLevel() {
-        return priorityLevel;
-    }
-    public void setPriorityLevel(Integer priorityLevel) {
-        this.priorityLevel = priorityLevel;
+    public Double getLoadMW() {
+        return loadMW;
     }
 
-    public Integer getPopulation() {
-        return population;
-    }
-    public void setPopulation(Integer population) {
-        this.population = population;
+    public void setLoadMW(Double loadMW) {
+        this.loadMW = loadMW;
     }
 
     public Boolean getActive() {
         return active;
     }
+
     public void setActive(Boolean active) {
         this.active = active;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
+    public Integer getPriorityLevel() {
+        return priorityLevel;
     }
 
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setPriorityLevel(Integer priorityLevel) {
+        this.priorityLevel = priorityLevel;
     }
 }
