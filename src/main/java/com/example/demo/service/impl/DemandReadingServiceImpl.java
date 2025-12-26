@@ -32,25 +32,25 @@ public class DemandReadingServiceImpl implements DemandReadingService {
         zoneRepository.findById(zoneId)
                 .orElseThrow(() -> new ResourceNotFoundException("Zone not found"));
 
-        return demandReadingRepository.save(reading);
+        return DemandReadingRepository.save(reading);
     }
 
     @Override
     public List<DemandReading> getReadingsForZone(Long zoneId) {
-        demandReadingRepository.findByZoneIdOrderByRecordedAtDesc(zoneId);
+        DemandReadingRepository.findByZoneIdOrderByRecordedAtDesc(zoneId);
 
     }
 
     @Override
     public DemandReading getLatestReading(Long zoneId) {
-        return demandReadingRepository
+        return DemandReadingRepository
                 .findFirstByZoneIdOrderByRecordedAtDesc(zoneId)
                 .orElseThrow(() -> new ResourceNotFoundException("No readings found"));
     }
 
     @Override
     public List<DemandReading> getRecentReadings(Long zoneId, int limit) {
-        return demandReadingRepository
+        return DemandReadingRepository
                 .findByZoneIdOrderByRecordedAtDesc(zoneId, PageRequest.of(0, limit));
     }
 }
