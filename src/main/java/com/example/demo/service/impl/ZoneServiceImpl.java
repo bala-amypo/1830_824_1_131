@@ -36,8 +36,8 @@ public class ZoneServiceImpl implements ZoneService {
             zone.setActive(true);
         }
 
-        zone.setCreatedAt(Instant.now());
-        zone.setUpdatedAt(Instant.now());
+        
+        
 
         return zoneRepo.save(zone);
     }
@@ -66,7 +66,7 @@ public class ZoneServiceImpl implements ZoneService {
             existing.setActive(input.getActive());
         }
 
-        existing.setUpdatedAt(Instant.now());
+       
 
         return zoneRepo.save(existing);
     }
