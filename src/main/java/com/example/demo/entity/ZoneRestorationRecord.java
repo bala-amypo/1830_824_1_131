@@ -1,12 +1,17 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import lombok.*;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 @Entity
 @Table(name = "zone_restoration_record")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class ZoneRestorationRecord {
 
     @Id
@@ -14,45 +19,13 @@ public class ZoneRestorationRecord {
     private Long id;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "zone_id", nullable = false)
     private Zone zone;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "event_id", nullable = false)
-    private LoadSheddingEvent loadSheddingEvent;
+    @Column(nullable = false)
+    private Long eventId;
 
-    @NotNull
-    @Column(name = "restored_at", nullable = false)
-    private LocalDateTime restoredAt;
+    @Column(nullable = false)
+    private Instant restoredAt;
 
-    public ZoneRestorationRecord() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public Zone getZone() {
-        return zone;
-    }
-
-    public void setZone(Zone zone) {
-        this.zone = zone;
-    }
-
-    public LoadSheddingEvent getLoadSheddingEvent() {
-        return loadSheddingEvent;
-    }
-
-    public void setLoadSheddingEvent(LoadSheddingEvent loadSheddingEvent) {
-        this.loadSheddingEvent = loadSheddingEvent;
-    }
-
-    public LocalDateTime getRestoredAt() {
-        return restoredAt;
-    }
-
-    public void setRestoredAt(LocalDateTime restoredAt) {
-        this.restoredAt = restoredAt;
-    }
+    private String notes;
 }
