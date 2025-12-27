@@ -76,14 +76,14 @@ public class LoadSheddingServiceImpl implements LoadSheddingService {
         if (selectedZone == null) {
             throw new BadRequestException("No suitable zones with demand");
         }
-        
         LoadSheddingEvent event = LoadSheddingEvent.builder()
-        .zoneId(selectedZone.getId())
+        .zoneId(zone.getId())
         .eventStart(Instant.now())
         .reason("Load shedding triggered due to supply deficit")
         .triggeredByForecastId(forecastId)
         .expectedDemandReductionMW(Math.max(deficit, selectedDemand))
         .build();
+
 
          return eventRepository.save(event);
 
