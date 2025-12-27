@@ -41,22 +41,26 @@ public class LoadSheddingServiceImpl implements LoadSheddingService {
     public LoadSheddingEvent triggerLoadShedding(Long forecastId) {
 
         SupplyForecast forecast = forecastRepository.findById(forecastId)
-                .orElseThrow(() -> new ResourceNotFoundException("Forecast not found"));
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Forecast not found"));
 
-        List<Zone> activeZones = zoneRepository.findByActiveTrueOrderByPriorityLevelAsc();
+        List<Zone> activeZones =
+                zoneRepository.findByActiveTrueOrderByPriorityLevelAsc();
 
         if (activeZones.isEmpty()) {
-            throw new BadRequestException("No suitable zones available for load shedding");
+            throw new BadRequestException("No active zones available");
         }
 
         double totalDemand = 0;
 
         for (Zone zone : activeZones) {
-            Optional<DemandReading> latestReading =
-                    readingRepository.findFirstByZoneIdOrderByRecordedAtDesc(zone.getId());
+            Optional<DemandReading> reading =
+                    readingRepository.findFirstByZoneIdOrderByRecordedAtDesc(
+                            zone.getId()
+                    );
 
-            if (latestReading.isPresent()) {
-                totalDemand += latestReading.get().getDemandMW();
+            if (reading.isPresent()) {
+                totalDemand += reading.get().getDemandMW();
             }
         }
 
@@ -64,8 +68,10 @@ public class LoadSheddingServiceImpl implements LoadSheddingService {
             throw new BadRequestException("No overload detected");
         }
 
-        double deficit = totalDemand - forecast.getAvailableSupplyMW();
+        double deficit =
+                totalDemand - forecast.getAvailableSupplyMW();
 
+        // 🔽 Pick lowest priority zone (last in list)
         Zone selectedZone = null;
         double selectedDemand = 0;
 
@@ -73,7 +79,9 @@ public class LoadSheddingServiceImpl implements LoadSheddingService {
             Zone zone = activeZones.get(i);
 
             Optional<DemandReading> reading =
-                    readingRepository.findFirstByZoneIdOrderByRecordedAtDesc(zone.getId());
+                    readingRepository.findFirstByZoneIdOrderByRecordedAtDesc(
+                            zone.getId()
+                    );
 
             if (reading.isPresent() && reading.get().getDemandMW() > 0) {
                 selectedZone = zone;
@@ -83,15 +91,17 @@ public class LoadSheddingServiceImpl implements LoadSheddingService {
         }
 
         if (selectedZone == null) {
-            throw new BadRequestException("No suitable zones with demand");
+            throw new BadRequestException("No suitable zone found");
         }
 
         LoadSheddingEvent event = LoadSheddingEvent.builder()
                 .zoneId(selectedZone.getId())
-                .eventStart(Instant.now())
-                .reason("Load shedding triggered due to supply deficit")
+                .createdAt(Instant.now())
+                .reason("Load shedding due to supply deficit")
                 .triggeredByForecastId(forecastId)
-                .expectedDemandReductionMW(Math.min(deficit, selectedDemand))
+                .expectedDemandReductionMW(
+                        Math.min(deficit, selectedDemand)
+                )
                 .build();
 
         return eventRepository.save(event);
@@ -100,7 +110,8 @@ public class LoadSheddingServiceImpl implements LoadSheddingService {
     @Override
     public LoadSheddingEvent getEventById(Long id) {
         return eventRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Event not found"));
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Event not found"));
     }
 
     @Override
