@@ -10,10 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/restorations")
-@Tag(
-    name = "Zone Restoration Management",
-    description = "APIs for managing zone restoration records"
-)
+@Tag(name = "Zone Restoration Management", description = "APIs for managing zone restoration records")
 public class ZoneRestorationController {
 
     private final ZoneRestorationService restorationService;
@@ -22,7 +19,7 @@ public class ZoneRestorationController {
         this.restorationService = restorationService;
     }
 
-    // ✅ CREATE restoration (returns ID)
+    // ✅ FIXED: return type changed to Long
     @PostMapping
     public ResponseEntity<Long> restoreZone(
             @RequestBody ZoneRestorationRecord record) {
@@ -32,7 +29,7 @@ public class ZoneRestorationController {
         );
     }
 
-    // ✅ GET restoration by ID
+    // ✅ FIXED: correct service method
     @GetMapping("/{id}")
     public ResponseEntity<ZoneRestorationRecord> getRecord(
             @PathVariable Long id) {
@@ -42,7 +39,6 @@ public class ZoneRestorationController {
         );
     }
 
-    // ✅ GET restorations for zone
     @GetMapping("/zone/{zoneId}")
     public ResponseEntity<List<ZoneRestorationRecord>> getRecordsForZone(
             @PathVariable Long zoneId) {
