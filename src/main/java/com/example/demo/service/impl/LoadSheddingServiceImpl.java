@@ -47,7 +47,7 @@ public class LoadSheddingServiceImpl implements LoadSheddingService {
         
         double totalDemand = 0;
         for (Zone zone : activeZones) {
-            Optional<DemandReading> latestReading = readingRepository.findFirstByZoneIdOrderByRecordedAtDesc(zone.getId());
+            Optional<DemandReading> latestReading = readingRepository.findFirstByZoneIdOrderByRecordedAtDesc(selectedZone.getId());
             if (latestReading.isPresent()) {
                 totalDemand += latestReading.get().getDemandMW();
             }
@@ -65,7 +65,7 @@ public class LoadSheddingServiceImpl implements LoadSheddingService {
         
         for (int i = activeZones.size() - 1; i >= 0; i--) {
             Zone zone = activeZones.get(i);
-            Optional<DemandReading> reading = readingRepository.findFirstByZoneIdOrderByRecordedAtDesc(zone.getId());
+            Optional<DemandReading> reading = readingRepository.findFirstByZoneIdOrderByRecordedAtDesc(zselectedZone.getId());
             if (reading.isPresent() && reading.get().getDemandMW() > 0) {
                 selectedZone = zone;
                 selectedDemand = reading.get().getDemandMW();
