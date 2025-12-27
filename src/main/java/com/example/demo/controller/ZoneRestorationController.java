@@ -21,7 +21,7 @@ public class ZoneRestorationController {
     @PostMapping
     public ResponseEntity<ZoneRestorationRecord> restoreZone(@RequestBody ZoneRestorationRecord record) {
         return ResponseEntity.ok(restorationService.saveRestoration(record.getId());
-);
+
     }
     
     @GetMapping("/{id}")
