@@ -19,10 +19,10 @@ public class ZoneRestorationController {
     }
     
     @PostMapping
-    public ResponseEntity<ZoneRestorationRecord> restoreZone(@RequestBody ZoneRestorationRecord record) {
-        return ResponseEntity.ok(restorationService.saveRestoration(record.getId());
+     public ResponseEntity<ZoneRestorationRecord> restoreZone(@RequestBody ZoneRestorationRecord record) {
+    return ResponseEntity.ok(restorationService.saveRestoration(record));
+}
 
-    }
     
     @GetMapping("/{id}")
     public ResponseEntity<ZoneRestorationRecord> getRecord(@PathVariable Long id) {
