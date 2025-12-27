@@ -1,11 +1,14 @@
 package com.example.demo.entity;
 
-import lombok.*;
 import jakarta.persistence.*;
+import lombok.*;
 import java.time.Instant;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class DemandReading {
 
     @Id

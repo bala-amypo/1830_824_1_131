@@ -1,11 +1,13 @@
 package com.example.demo.entity;
 
-import lombok.*;
 import jakarta.persistence.*;
+import lombok.*;
 import java.time.Instant;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class LoadSheddingEvent {
 
@@ -14,5 +16,6 @@ public class LoadSheddingEvent {
     private Long id;
 
     private Long zoneId;
-    private Double shedAmount;
+    private Double shedMW;
+    private Instant startedAt;
 }
