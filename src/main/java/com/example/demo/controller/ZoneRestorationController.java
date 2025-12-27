@@ -5,34 +5,50 @@ import com.example.demo.service.ZoneRestorationService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
-;
 
 @RestController
 @RequestMapping("/api/restorations")
-@Tag(name = "Zone Restoration Management", description = "APIs for managing zone restoration records")
+@Tag(
+    name = "Zone Restoration Management",
+    description = "APIs for managing zone restoration records"
+)
 public class ZoneRestorationController {
-    
+
     private final ZoneRestorationService restorationService;
-    
+
     public ZoneRestorationController(ZoneRestorationService restorationService) {
         this.restorationService = restorationService;
     }
-    
+
+    // ✅ CREATE restoration (returns ID)
     @PostMapping
-     public ResponseEntity<ZoneRestorationRecord> restoreZone(@RequestBody ZoneRestorationRecord record) {
-    return ResponseEntity.ok(restorationService.saveRestoration(record));
-}
+    public ResponseEntity<Long> restoreZone(
+            @RequestBody ZoneRestorationRecord record) {
 
-    
+        return ResponseEntity.ok(
+                restorationService.saveRestoration(record)
+        );
+    }
+
+    // ✅ GET restoration by ID
     @GetMapping("/{id}")
-    public ResponseEntity<ZoneRestorationRecord> getRecord(@PathVariable Long id) {
-    return ResponseEntity.ok(restorationService.saveRestoration(id));
-}
+    public ResponseEntity<ZoneRestorationRecord> getRecord(
+            @PathVariable Long id) {
 
-    
+        return ResponseEntity.ok(
+                restorationService.getRecordById(id)
+        );
+    }
+
+    // ✅ GET restorations for zone
     @GetMapping("/zone/{zoneId}")
-    public ResponseEntity<List<ZoneRestorationRecord>> getRecordsForZone(@PathVariable Long zoneId) {
-        return ResponseEntity.ok(restorationService.getRecordsForZone(zoneId));
+    public ResponseEntity<List<ZoneRestorationRecord>> getRecordsForZone(
+            @PathVariable Long zoneId) {
+
+        return ResponseEntity.ok(
+                restorationService.getRecordsForZone(zoneId)
+        );
     }
 }
