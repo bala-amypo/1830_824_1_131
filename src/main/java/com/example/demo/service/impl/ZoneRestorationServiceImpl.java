@@ -8,21 +8,17 @@ import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 
-@Service
-public class ZoneRestorationServiceImpl implements ZoneRestorationService {
+@Override
+public ZoneRestorationRecord saveRestoration(Long zoneId) {
+    return new ZoneRestorationRecord();
+}
 
-    @Override
-    public ZoneRestorationRecord createRecord(ZoneRestorationRecord record) {
-        return record;
-    }
+@Override
+public ZoneRestorationRecord getRecordById(Long id) {
+    return new ZoneRestorationRecord();
+}
 
-    @Override
-    public ZoneRestorationRecord getRecordById(Long id) {
-        return null;
-    }
-
-    @Override
-    public List<ZoneRestorationRecord> getRecordsForZone(Long zoneId) {
-        return List.of();
-    }
+@Override
+public List<ZoneRestorationRecord> getRecordsForZone(Long zoneId) {
+    return List.of();
 }
