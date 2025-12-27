@@ -1,46 +1,36 @@
 package com.example.demo.config;
 
-import java.util.List;
-
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import io.swagger.v3.oas.models.servers.Server;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import java.util.List;
 
 @Configuration
-public class SwaggerConfig {
-
-    public static final String SECURITY_SCHEME_NAME = "bearerAuth";
+public class OpenApiConfig {
 
     @Bean
     public OpenAPI customOpenAPI() {
 
+        SecurityScheme bearerAuth = new SecurityScheme()
+                .name("Authorization")          // ✅ IMPORTANT
+                .type(SecurityScheme.Type.HTTP)
+                .scheme("bearer")
+                .bearerFormat("JWT");
+
         return new OpenAPI()
-                // ✅ Server configuration (you already had this)
                 .servers(List.of(
-                        new Server().url("https://9034.32procr.amypo.ai/")
+                        new Server().url("https://9086.32procr.amypo.ai/")
                 ))
-
-                // ✅ THIS enables the Authorize button
-                .addSecurityItem(
-                        new SecurityRequirement().addList(SECURITY_SCHEME_NAME)
+                .components(new Components()
+                        .addSecuritySchemes("bearerAuth", bearerAuth)
                 )
-
-                // ✅ JWT Bearer definition
-                .components(
-                        new Components()
-                                .addSecuritySchemes(
-                                        SECURITY_SCHEME_NAME,
-                                        new SecurityScheme()
-                                                .name("Authorization")
-                                                .type(SecurityScheme.Type.HTTP)
-                                                .scheme("bearer")
-                                                .bearerFormat("JWT")
-                                )
+                .addSecurityItem(
+                        new SecurityRequirement().addList("bearerAuth")
                 );
     }
 }
