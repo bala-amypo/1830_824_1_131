@@ -78,6 +78,9 @@ public class LoadSheddingServiceImpl implements LoadSheddingService {
         }
         
         LoadSheddingEvent event = LoadSheddingEvent.builder()
+            .zoneId(zone.getId())
+             .build();
+
             .zone(selectedZone)
             .eventStart(Instant.now())
             .reason("Load shedding triggered due to supply deficit")
