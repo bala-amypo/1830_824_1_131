@@ -27,9 +27,9 @@ public class ZoneRestorationController {
     
     @GetMapping("/{id}")
     public ResponseEntity<ZoneRestorationRecord> getRecord(@PathVariable Long id) {
-      return ResponseEntity.ok(restorationService.saveRestoration(record));
+    return ResponseEntity.ok(restorationService.saveRestoration(id));
+}
 
-    }
     
     @GetMapping("/zone/{zoneId}")
     public ResponseEntity<List<ZoneRestorationRecord>> getRecordsForZone(@PathVariable Long zoneId) {
