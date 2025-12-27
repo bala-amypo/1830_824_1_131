@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.DemandReading;
+
 import java.util.List;
 
 public interface DemandReadingService {
@@ -9,3 +10,4 @@ public interface DemandReadingService {
     DemandReading getLatestReading(Long zoneId);
     List<DemandReading> getRecentReadings(Long zoneId, int limit);
 }
+
