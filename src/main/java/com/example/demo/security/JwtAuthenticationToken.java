@@ -1,66 +1,29 @@
-package com.example.demo.config;
+package com.example.demo.security;
 
-import com.example.demo.entity.UserAccount;
-import io.jsonwebtoken.*;
-import io.jsonwebtoken.security.Keys;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.Authentication;
-import org.springframework.stereotype.Component;
+import org.springframework.security.authentication.AbstractAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
 
-import java.nio.charset.StandardCharsets;
-import java.security.Key;
-import java.util.Date;
+import java.util.Collection;
 
-@Component
-public class JwtAuthenticationTokenProvider {
+public class JwtAuthenticationToken extends AbstractAuthenticationToken {
+    
+    private final Object principal;
+    private final String token;
 
-    private final String jwtSecret;
-    private final long jwtExpirationInMs;
-
-    public JwtTokenProvider(@Value("${app.jwtSecret:thisIsA32ByteMinimumSecureJwtTestKey!}") String jwtSecret,
-                            @Value("${app.jwtExpirationInMs:3600000}") long jwtExpirationInMs) {
-        this.jwtSecret = jwtSecret;
-        this.jwtExpirationInMs = jwtExpirationInMs;
+    public JwtAuthenticationToken(String token, Object principal, Collection<? extends GrantedAuthority> authorities) {
+        super(authorities);
+        this.token = token;
+        this.principal = principal;
+        setAuthenticated(true);
     }
 
-    public String generateToken(Authentication authentication, UserAccount user) {
-        Date now = new Date();
-        Date expiryDate = new Date(now.getTime() + jwtExpirationInMs);
-
-        // In a real app we might use authentication.getName() or user.getUsername()
-        // The test passes both.
-        
-        return Jwts.builder()
-                .setSubject(user.getUsername())
-                .claim("id", user.getId())
-                .claim("role", user.getRole().name())
-                .setIssuedAt(new Date())
-                .setExpiration(expiryDate)
-                .signWith(getSigningKey(), SignatureAlgorithm.HS256)
-                .compact();
+    @Override
+    public Object getCredentials() {
+        return token;
     }
 
-    private Key getSigningKey() {
-        byte[] keyBytes = jwtSecret.getBytes(StandardCharsets.UTF_8);
-        return Keys.hmacShaKeyFor(keyBytes);
-    }
-
-    public String getUsernameFromToken(String token) {
-        Claims claims = Jwts.parserBuilder()
-                .setSigningKey(getSigningKey())
-                .build()
-                .parseClaimsJws(token)
-                .getBody();
-
-        return claims.getSubject();
-    }
-
-    public boolean validateToken(String authToken) {
-        try {
-            Jwts.parserBuilder().setSigningKey(getSigningKey()).build().parseClaimsJws(authToken);
-            return true;
-        } catch (JwtException | IllegalArgumentException ex) {
-            return false;
-        }
+    @Override
+    public Object getPrincipal() {
+        return principal;
     }
 }
