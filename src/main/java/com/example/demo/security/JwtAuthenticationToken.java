@@ -17,7 +17,7 @@ public class JwtAuthenticationTokenProvider {
     private final String jwtSecret;
     private final long jwtExpirationInMs;
 
-    public JwtAuthenticationTokenProvider(@Value("${app.jwtSecret:thisIsA32ByteMinimumSecureJwtTestKey!}") String jwtSecret,
+    public JwtTokenProvider(@Value("${app.jwtSecret:thisIsA32ByteMinimumSecureJwtTestKey!}") String jwtSecret,
                             @Value("${app.jwtExpirationInMs:3600000}") long jwtExpirationInMs) {
         this.jwtSecret = jwtSecret;
         this.jwtExpirationInMs = jwtExpirationInMs;
