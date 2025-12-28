@@ -12,7 +12,7 @@ import java.security.Key;
 import java.util.Date;
 
 @Component
-public class JwtTokenProvider {
+public class JwtAuthenticationTokenProvider {
 
     private final String jwtSecret;
     private final long jwtExpirationInMs;
